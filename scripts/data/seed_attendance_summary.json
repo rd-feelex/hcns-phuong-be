@@ -1,0 +1,762 @@
+[
+ {
+  "employee_code": "OZO06042021VVT",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XG06042021P",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD22102022",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD01122022",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD01062023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD26082024",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD25112024",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD01062026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD01082023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "OZO05062023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.5,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD31052023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "OZO19032025A",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 11.5,
+  "total_paid_days": 17.5
+ },
+ {
+  "employee_code": "OZO08042025T",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD25052026",
+  "month": "2026-07",
+  "total_work_days": 20.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 6.0,
+  "total_paid_days": 26.0
+ },
+ {
+  "employee_code": "XTRAD22072026",
+  "month": "2026-07",
+  "total_work_days": 8.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 8.0,
+  "total_paid_days": 8.0
+ },
+ {
+  "employee_code": "XTRAD01042024P",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD07032025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD03042023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD23042025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD06052025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 4.0,
+  "total_paid_days": 4.0
+ },
+ {
+  "employee_code": "XTRAD12052025H",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 27.0
+ },
+ {
+  "employee_code": "XTRAD19052025B",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -4.0,
+  "late_days": 0,
+  "meal_days": 26.0,
+  "total_paid_days": 26.0
+ },
+ {
+  "employee_code": "XTRAD27072026",
+  "month": "2026-07",
+  "total_work_days": 9.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -4.0,
+  "late_days": 0,
+  "meal_days": 9.0,
+  "total_paid_days": 9.0
+ },
+ {
+  "employee_code": "XTRAD05052025A",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 1.0,
+  "late_days": 0.88,
+  "meal_days": 24.5,
+  "total_paid_days": 23.62
+ },
+ {
+  "employee_code": "XTRAD18062024",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD02082022",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.04,
+  "meal_days": 25.0,
+  "total_paid_days": 24.96
+ },
+ {
+  "employee_code": "XE18102023MN",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD13052024",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD27052024L",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD13052025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD06032025Q",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD06042026N",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 1.0,
+  "late_days": 0.29,
+  "meal_days": 24.5,
+  "total_paid_days": 24.21
+ },
+ {
+  "employee_code": "XTRAD06042026A",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 2.0,
+  "late_days": 0.33,
+  "meal_days": 21.0,
+  "total_paid_days": 20.68
+ },
+ {
+  "employee_code": "XTRAD23042026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.05,
+  "meal_days": 24.5,
+  "total_paid_days": 24.45
+ },
+ {
+  "employee_code": "XTRAD06042026B",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.1,
+  "meal_days": 25.0,
+  "total_paid_days": 24.9
+ },
+ {
+  "employee_code": "XTRAD19032025B",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 1.0,
+  "late_days": 0.02,
+  "meal_days": 24.0,
+  "total_paid_days": 23.98
+ },
+ {
+  "employee_code": "XTRAD01042025A",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 1.0,
+  "late_days": 0.12,
+  "meal_days": 24.0,
+  "total_paid_days": 23.88
+ },
+ {
+  "employee_code": "XTRAD17022025D",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.31,
+  "meal_days": 25.0,
+  "total_paid_days": 24.69
+ },
+ {
+  "employee_code": "XTRAD18082025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.11,
+  "meal_days": 25.0,
+  "total_paid_days": 24.89
+ },
+ {
+  "employee_code": "OZO17102023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.02,
+  "meal_days": 25.0,
+  "total_paid_days": 24.98
+ },
+ {
+  "employee_code": "XTRAD13092024",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD20042026C",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.09,
+  "meal_days": 25.0,
+  "total_paid_days": 24.91
+ },
+ {
+  "employee_code": "XTRAD20102023",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD20042026A",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 2.0,
+  "late_days": 0,
+  "meal_days": 24.0,
+  "total_paid_days": 24.0
+ },
+ {
+  "employee_code": "OZO01072025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD05052025G",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.37,
+  "meal_days": 25.0,
+  "total_paid_days": 24.63
+ },
+ {
+  "employee_code": "XTRAD27052025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD09062025B",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XC23062025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XC03072025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XG11072025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XE06042026T",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD05112025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "OZO26112025",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 1.0,
+  "late_days": 0,
+  "meal_days": 21.0,
+  "total_paid_days": 21.0
+ },
+ {
+  "employee_code": "XTRAD07052026",
+  "month": "2026-07",
+  "total_work_days": 4.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 3.0,
+  "late_days": 0.07,
+  "meal_days": 11.5,
+  "total_paid_days": 11.43
+ },
+ {
+  "employee_code": "XTRAD15052026",
+  "month": "2026-07",
+  "total_work_days": 11.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -2.0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "OZO05032026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -3.0,
+  "late_days": 0,
+  "meal_days": 3.5,
+  "total_paid_days": 3.5
+ },
+ {
+  "employee_code": "XTRAD30032026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XE20032026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -1.0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD02032026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XE16042026",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 25.0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "XTRAD07072026",
+  "month": "2026-07",
+  "total_work_days": 18.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0.07,
+  "meal_days": 18.5,
+  "total_paid_days": 18.43
+ },
+ {
+  "employee_code": "XC13072026",
+  "month": "2026-07",
+  "total_work_days": 16.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -4.0,
+  "late_days": 0,
+  "meal_days": 16.0,
+  "total_paid_days": 16.0
+ },
+ {
+  "employee_code": "XTRAD30072026",
+  "month": "2026-07",
+  "total_work_days": 2.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -4.0,
+  "late_days": 0,
+  "meal_days": 2.0,
+  "total_paid_days": 2.0
+ },
+ {
+  "employee_code": "XTRAD14042025",
+  "month": "2026-07",
+  "total_work_days": 24.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": -4.0,
+  "late_days": 0.1,
+  "meal_days": 24.0,
+  "total_paid_days": 23.9
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "0",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X/2+P/2",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X/2+P/2",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ },
+ {
+  "employee_code": "X/2+P/2",
+  "month": "2026-07",
+  "total_work_days": 0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 0
+ }
+]
