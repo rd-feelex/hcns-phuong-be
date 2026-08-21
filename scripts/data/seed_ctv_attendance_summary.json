@@ -1,0 +1,142 @@
+[
+ {
+  "employee_code": "XTRAD13042026",
+  "month": "2026-07",
+  "total_work_days": 25.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "CTV11052026",
+  "month": "2026-07",
+  "total_work_days": 23.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 23.0
+ },
+ {
+  "employee_code": "CTV18052026V",
+  "month": "2026-07",
+  "total_work_days": 24.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 24.5
+ },
+ {
+  "employee_code": "CTV01062026",
+  "month": "2026-07",
+  "total_work_days": 23.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 23.0
+ },
+ {
+  "employee_code": "CTV09062026",
+  "month": "2026-07",
+  "total_work_days": 22.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 22.5
+ },
+ {
+  "employee_code": "CTV15062026",
+  "month": "2026-07",
+  "total_work_days": 23.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 23.0
+ },
+ {
+  "employee_code": "CTV17062026",
+  "month": "2026-07",
+  "total_work_days": 23.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 23.0
+ },
+ {
+  "employee_code": "CTV29062026",
+  "month": "2026-07",
+  "total_work_days": 25.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "CTV22062026",
+  "month": "2026-07",
+  "total_work_days": 25.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "CTV01072026",
+  "month": "2026-07",
+  "total_work_days": 25.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 25.0
+ },
+ {
+  "employee_code": "CTV07072026YL",
+  "month": "2026-07",
+  "total_work_days": 18.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 18.5
+ },
+ {
+  "employee_code": "CTV13072026",
+  "month": "2026-07",
+  "total_work_days": 16.0,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 16.0
+ },
+ {
+  "employee_code": "CTV07072026BH",
+  "month": "2026-07",
+  "total_work_days": 20.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 20.5
+ },
+ {
+  "employee_code": "CTV07072026NH",
+  "month": "2026-07",
+  "total_work_days": 10.5,
+  "total_leave_days": 0,
+  "unpaid_leave_days": 0,
+  "late_days": 0,
+  "meal_days": 0,
+  "total_paid_days": 10.5
+ }
+]

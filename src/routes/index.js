@@ -5,5 +5,6 @@ router.use('/salaries', require('./salary.routes'));
 router.use('/attendance', require('./attendance.routes'));
 router.use('/dashboard', require('./dashboard.routes'));
 router.use('/payroll', require('./payroll.routes'));
+router.use('/hr', require('./hr.routes'));
 
 module.exports = router;

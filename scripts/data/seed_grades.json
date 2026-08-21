@@ -1,0 +1,412 @@
+[
+ {
+  "grade": "G10",
+  "group_name": "Ban Lãnh Đạo",
+  "title": "Hội đồng thành viên",
+  "steps": {
+   "Bậc 1": 20000000.0,
+   "Bậc 2": 25000000.0,
+   "Bậc 3": 30000000.0,
+   "Bậc 4": 35000000.0,
+   "Bậc 5": 40000000.0,
+   "Bậc 6": 45000000.0,
+   "Bậc 7": 50000000.0
+  },
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 4000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 3500000.0
+ },
+ {
+  "grade": "G9",
+  "group_name": "Giám đốc điều hành",
+  "title": "Giám đốc điều hành/Phó GĐ điều hành",
+  "steps": {
+   "Bậc 1": 18000000.0,
+   "Bậc 2": 22500000.0,
+   "Bậc 3": 27000000.0,
+   "Bậc 4": 31500000.0,
+   "Bậc 5": 36000000.0,
+   "Bậc 6": 40500000.0,
+   "Bậc 7": 45000000.0
+  },
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 3000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G8",
+  "group_name": "Giám đốc vận hành",
+  "title": "Giám đốc vận hành/ Phó GĐ vận hành",
+  "steps": {
+   "Bậc 1": 15000000.0,
+   "Bậc 2": 19000000.0,
+   "Bậc 3": 23000000.0,
+   "Bậc 4": 27000000.0,
+   "Bậc 5": 31000000.0,
+   "Bậc 6": 35000000.0,
+   "Bậc 7": 39000000.0
+  },
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 2000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G7",
+  "group_name": "Giám đốc chức năng",
+  "title": "Các giám đốc/ Phó GĐ (tài chính, dự án, đầu tư, nhân sự, kỹ thuật, nhà máy, MKT…)",
+  "steps": {
+   "Bậc 1": 12000000.0,
+   "Bậc 2": 15000000.0,
+   "Bậc 3": 18000000.0,
+   "Bậc 4": 21000000.0,
+   "Bậc 5": 24000000.0,
+   "Bậc 6": 27000000.0,
+   "Bậc 7": 30000000.0
+  },
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 2000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G6",
+  "group_name": "Quản lý cấp phòng ban",
+  "title": "Trưởng các phòng ban, trưởng ban, trưởng ban dự án, Kế toán trưởng….",
+  "steps": {
+   "Bậc 1": 10000000.0,
+   "Bậc 2": 12500000.0,
+   "Bậc 3": 15000000.0,
+   "Bậc 4": 17500000.0,
+   "Bậc 5": 20000000.0,
+   "Bậc 6": 22500000.0,
+   "Bậc 7": 25000000.0
+  },
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 1000000.0,
+  "allowance_attendance": 2500000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G5",
+  "group_name": "Quản lý cấp bộ phận",
+  "title": "Phó phòng, trưởng bộ phận, trưởng nhóm, Quản lý Kho/ Phó Kho, Trợ lý GĐ/HĐTV",
+  "steps": {
+   "Bậc 1": 8000000.0,
+   "Bậc 2": 10000000.0,
+   "Bậc 3": 12000000.0,
+   "Bậc 4": 14000000.0,
+   "Bậc 5": 16000000.0,
+   "Bậc 6": 18000000.0,
+   "Bậc 7": 20000000.0
+  },
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 1000000.0,
+  "allowance_attendance": 2000000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G4",
+  "group_name": "Chuyên viên, kỹ sư",
+  "title": "Chuyên viên, KTTH, nhân sự, pháp chế, XNK, KSNB, MKT, bán hàng, Chuyên viên CNTT, Kỹ sư thiết kế, Chuyên viên R&D, chuyên viên tài chính,  kỹ sư QLDA",
+  "steps": {
+   "Bậc 1": 7000000.0,
+   "Bậc 2": 8000000.0,
+   "Bậc 3": 9000000.0,
+   "Bậc 4": 10000000.0,
+   "Bậc 5": 11000000.0,
+   "Bậc 6": 12000000.0,
+   "Bậc 7": 13000000.0
+  },
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 500000.0,
+  "allowance_attendance": 1500000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G3",
+  "group_name": "Nhân viên chuyên môn nghiệp vụ và kỹ thuật",
+  "title": "Nhân viên (kế toán kho, thuế, thanh toán, công nợ, hành chính, nhân sự, quản lý thiết bị, thống kê kỹ thuật, mua hàng, thủ kho, Nhân viên R&D, thư ký GĐ/HĐTV), Chăm sóc khách hàng",
+  "steps": {
+   "Bậc 1": 6000000.0,
+   "Bậc 2": 6500000.0,
+   "Bậc 3": 7000000.0,
+   "Bậc 4": 7500000.0,
+   "Bậc 5": 8000000.0,
+   "Bậc 6": 8500000.0,
+   "Bậc 7": 9000000.0
+  },
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 500000.0,
+  "allowance_attendance": 1000000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G2",
+  "group_name": "Nhân viên phục vụ và hỗ trợ",
+  "title": "Nhân viên thủ quỹ, giám sát camera, lễ tân, lái xe văn phòng nhân viên tư vấn bán hàng, nhân viên ecom, lái xe vận chuyển….",
+  "steps": {
+   "Bậc 1": 5500000.0,
+   "Bậc 2": 6000000.0,
+   "Bậc 3": 6500000.0,
+   "Bậc 4": 7000000.0,
+   "Bậc 5": 7500000.0,
+   "Bậc 6": 8000000.0,
+   "Bậc 7": 8500000.0
+  },
+  "allowance_phone": 100000.0,
+  "allowance_fuel": 200000.0,
+  "allowance_attendance": 1000000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G1",
+  "group_name": "Nhân viên phục vụ và hỗ trợ khác (LĐPT)",
+  "title": "Kho, Bảo vệ, Tạp vụ",
+  "steps": {
+   "Bậc 1": 5310000.0,
+   "Bậc 2": 5500000.0,
+   "Bậc 3": 6000000.0,
+   "Bậc 4": 6500000.0,
+   "Bậc 5": 7000000.0,
+   "Bậc 6": 7500000.0,
+   "Bậc 7": 8000000.0
+  },
+  "allowance_phone": 100000.0,
+  "allowance_fuel": 200000.0,
+  "allowance_attendance": 200000.0,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G9",
+  "group_name": "Giám đốc điều hành",
+  "title": "Giám đốc điều hành/Phó GD điều hành",
+  "steps": {},
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 3000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 3000000.0
+ },
+ {
+  "grade": "G8",
+  "group_name": "Giám đốc vận hành",
+  "title": "Giám đốc vận hành/Phó GD vận hành",
+  "steps": {},
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 2000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 2500000.0
+ },
+ {
+  "grade": "G7",
+  "group_name": "Giám đốc chức năng",
+  "title": "Các giám đốc/Phó GD",
+  "steps": {},
+  "allowance_phone": 1000000.0,
+  "allowance_fuel": 2000000.0,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 2000000.0
+ },
+ {
+  "grade": "G6",
+  "group_name": "Quản lý cấp phòng ban",
+  "title": "Trưởng/Phó phòng ban",
+  "steps": {},
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 1000000.0,
+  "allowance_attendance": 2500000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 1500000.0
+ },
+ {
+  "grade": "G5",
+  "group_name": "Quản lý cấp bộ phận",
+  "title": "Phó phòng, trưởng nhóm",
+  "steps": {},
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 1000000.0,
+  "allowance_attendance": 2000000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": 1000000.0
+ },
+ {
+  "grade": "G4",
+  "group_name": "Chuyên viên, kỹ sư",
+  "title": "Chuyên viên CNTT, R&D, kỹ sư...",
+  "steps": {},
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 500000.0,
+  "allowance_attendance": 1500000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G3",
+  "group_name": "Nhân viên chuyên môn nghiệp vụ",
+  "title": "Nhân viên kế toán, HCNS, CSKH...",
+  "steps": {},
+  "allowance_phone": 500000.0,
+  "allowance_fuel": 500000.0,
+  "allowance_attendance": 1000000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G2",
+  "group_name": "Nhân viên phục vụ và hỗ trợ",
+  "title": "Lễ tân, admin, vận chuyển...",
+  "steps": {},
+  "allowance_phone": 100000.0,
+  "allowance_fuel": 200000.0,
+  "allowance_attendance": 1000000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G1",
+  "group_name": "Nhân viên phục vụ và hỗ trợ khác",
+  "title": "Kho, bảo vệ, tạp vụ...",
+  "steps": {},
+  "allowance_phone": 100000.0,
+  "allowance_fuel": 200000.0,
+  "allowance_attendance": 200000.0,
+  "allowance_meal_per_day": 30000.0,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "Ngạch lương",
+  "group_name": "Chức danh công việc",
+  "title": "Bậc I",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G10",
+  "group_name": "Ban lãnh đạo",
+  "title": "20000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G9",
+  "group_name": "Giám đốc điều hành",
+  "title": "18000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G8",
+  "group_name": "Giám đốc vận hành",
+  "title": "15000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G7",
+  "group_name": "Giám đốc chức năng",
+  "title": "12000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G6",
+  "group_name": "Quản lý phòng ban",
+  "title": "10000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G5",
+  "group_name": "Quản lý cấp bộ phận",
+  "title": "8000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G4",
+  "group_name": "Chuyên viên, kỹ sư",
+  "title": "7000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G3",
+  "group_name": "Nhân viên chuyên môn nghiệp vụ và kỹ thuật",
+  "title": "6000000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G2",
+  "group_name": "Nhân viên phục vụ và hỗ trợ",
+  "title": "5500000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ },
+ {
+  "grade": "G1",
+  "group_name": "Nhân viên phục vụ và hỗ trợ khác",
+  "title": "5310000",
+  "steps": {},
+  "allowance_phone": null,
+  "allowance_fuel": null,
+  "allowance_attendance": null,
+  "allowance_meal_per_day": null,
+  "allowance_responsibility": null
+ }
+]

@@ -1,0 +1,1232 @@
+[
+ {
+  "month": "10/2025",
+  "employee_code": "OZO09102025",
+  "full_name": "Nguyễn Thị Thùy Dung",
+  "position": "Chuyên viên CnB",
+  "department": "HCNS",
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 17 triệu",
+  "effective_date": "2025-10-09"
+ },
+ {
+  "month": "10/2025",
+  "employee_code": "OZO22102025",
+  "full_name": "Nguyễn Lê Phương Mai",
+  "position": "Nhân viên nghiên cứu thị trường",
+  "department": "RnD",
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 12 triệu + PC ăn ca: 30k/ công thực tế",
+  "effective_date": "2025-10-22"
+ },
+ {
+  "month": "10/2025",
+  "employee_code": null,
+  "full_name": "CBNV Nữ công ty",
+  "position": null,
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Bổ sung phần bù trừ",
+  "effective_date": null
+ },
+ {
+  "month": "10/2025",
+  "employee_code": null,
+  "full_name": "Hồ Nguyễn Thị Na",
+  "position": null,
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Tính tiền đóng BHXH và báo giảm cho bên BHXH. Tháng 11 bổ sung thêm vào bảng BHXH",
+  "effective_date": null
+ },
+ {
+  "month": "10/2025",
+  "employee_code": null,
+  "full_name": "Trần Thanh Tùng",
+  "position": null,
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Thưởng động viên T10.2025: 2 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "10/2025",
+  "employee_code": null,
+  "full_name": "Trịnh Thị Yến",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Báo giảm trừ gia cảnh từ tháng 10.2025. Còn 1 người",
+  "effective_date": null
+ },
+ {
+  "month": "11/2025",
+  "employee_code": "OZO13092024",
+  "full_name": "Lương Thúy Hiền",
+  "position": "Nhân viên thiết kế",
+  "department": "Marketing",
+  "change_type": "Điều chỉnh lương",
+  "note": "Mức lương 11 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "11/2025",
+  "employee_code": "OZO11082025",
+  "full_name": "Đặng Văn Trường",
+  "position": "Thiết kế cơ khí",
+  "department": "RnD sản xuất",
+  "change_type": "Điều chỉnh lương",
+  "note": "Mức lương 18 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Thanh Thảo",
+  "position": "Nhân viên Hành chính- lễ tân",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 8 triệu + PC ăn ca: 30k/ công thực tế",
+  "effective_date": "2025-11-03"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Thúy Hằng",
+  "position": "Trưởng phòng HCNS",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 32 triệu + PC ăn ca: 30k/ công thực tế",
+  "effective_date": "2025-11-05"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Tạ Như Tuân",
+  "position": null,
+  "department": null,
+  "change_type": "Điều chỉnh lương",
+  "note": "Lương 55 triệu. Khấu trừ 10% tại nguồn",
+  "effective_date": "2025-11-01"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Trần Văn Nam",
+  "position": "Trưởng BP Digital",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 10 triệu+ 85% hỗ trợ của 5 triệu trong 3 tháng + PC ăn ca: 30k/ công thực tế.",
+  "effective_date": "2025-11-03"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Xuân Bách",
+  "position": "Thiết kế cơ khí",
+  "department": null,
+  "change_type": "Vào chính thức",
+  "note": "16.000.000đ (gross) + Phụ cấp ăn ca: 30.000đ/ngày công",
+  "effective_date": "2025-11-19"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Vũ Thị Kim Anh",
+  "position": "Nhân viên mua hàng",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 13 triệu",
+  "effective_date": "2025-11-24"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Bùi Minh Tuấn",
+  "position": "Giám đốc MKT",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "Thu nhập chính thức bao gồm: lương 40.000.000đ + % hoàn thành KPI 20.000.000đ + % doanh thu ( Gross)\nTrong đó:\n+ Trong đó, KPI được tính bằng tỉ lệ % hoàn thành KPI x 20.000.000đ\n+ % Doanh thu theo các mức: 0.1%- 0.3%. Nếu đạt từ 90% KPI: 0.1% x tổng doanh thu; Nếu đạt từ 100%- 110% KPI: 0.2% x tổng doanh thu; Nếu đạt vượt 110% KPI: 0.3% x tổng doanh thu.\nBên cạnh đó, mỗi quý xét thưởng theo cơ chế sau:\n+ Nếu đạt từ 90% KPI quý: 90% x 40.000.000đ\n+ Nếu đạt từ 100% KPI quý: 100% x 40.000.000đ\n- Trong thời gian thử việc nhận 100% lương + thực đạt % doanh thu + thực đạt KPI.",
+  "effective_date": "2025-11-24"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Công Ngọc Ánh",
+  "position": "Chuyên viên Tuyển dụng và Đào tạo",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 14 triệu + PC ăn ca: 30k/ công thực tế",
+  "effective_date": "2025-11-26"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Trần Thị Huyền Trang",
+  "position": "Trưởng phòng mua hàng",
+  "department": null,
+  "change_type": null,
+  "note": "Giảm trừ gia cảnh 1. Bố chồng",
+  "effective_date": "2025-11-01"
+ },
+ {
+  "month": "11/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Sáu",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Báo giảm bảo hiểm xã hội tháng 12.2025 do vậy sẽ tính thêm tiền truy thu bảo hiểm y tế.",
+  "effective_date": null
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Phương Thanh",
+  "position": "Nhân viên Hành chính",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "TV 2 tháng 85% của 10 triệu + PC ăn ca: 30k/ công thực tế",
+  "effective_date": "2025-12-10"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Xuân Bách",
+  "position": null,
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "16.000.000đ (gross) + Phụ cấp ăn ca: 30.000đ/ngày công",
+  "effective_date": "2025-11-19"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Thùy Dung",
+  "position": null,
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "Lương 17 triệu + Phụ cấp ăn ca 30k/tháng",
+  "effective_date": "2025-12-09"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Huỳnh Công Khanh",
+  "position": "Kho ĐN",
+  "department": null,
+  "change_type": null,
+  "note": "Trường hợp lương dưới 8 triệu phải bổ sung đủ ở cột AI Thưởng đánh giá để cho đủ 8 triệu",
+  "effective_date": "2025-12-01"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Hồ Nguyễn Thị Na",
+  "position": "Kho ĐN",
+  "department": null,
+  "change_type": null,
+  "note": "Trường hợp lương dưới 8 triệu phải bổ sung đủ ở cột AI Thưởng đánh giá để cho đủ 8 triệu",
+  "effective_date": "2025-12-01"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Nguyễn Ngọc Lan",
+  "position": "Nhân viên Pháp chế",
+  "department": null,
+  "change_type": "CBNV mới",
+  "note": "Thử việc 2 tháng 85% lương của 8 triệu",
+  "effective_date": "2025-12-14"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Cao Huy Bình",
+  "position": "Trưởng phòng nghiên cứu và phát triển sản phẩm",
+  "department": null,
+  "change_type": null,
+  "note": "Lương 27 triệu: Trong đó: 21,6 triệu lương cố định và 5,4 triệu lương KPI",
+  "effective_date": "2025-12-01"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Đào Danh Thịnh",
+  "position": "Nhân viên quản lý kho",
+  "department": null,
+  "change_type": "Điều chỉnh chức danh",
+  "note": "Lương 15 triệu + Phụ cấp ăn ca",
+  "effective_date": "2025-12-01"
+ },
+ {
+  "month": "12/2025",
+  "employee_code": null,
+  "full_name": "Toàn thể CBNV",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Cộng danh sách thưởng tết dương lịch 2026 để truy thu thuế",
+  "effective_date": null
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Đào Danh Thịnh",
+  "position": "Nhân viên quản lý kho",
+  "department": null,
+  "change_type": null,
+  "note": "Lương BHXH + 500 phụ cấp điện thoại + Đơn hàng bên kho + 1,5 triệu KPI + 20% của 15 triệu phòng mua hàng.( 3 triệu)",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Phan Thùy Dương",
+  "position": "Chuyên viên pháp chế",
+  "department": null,
+  "change_type": null,
+  "note": "Lương 17 triệu không bao gồm ăn ca",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Trang Nhung",
+  "position": "Nhân viên mua hàng",
+  "department": null,
+  "change_type": null,
+  "note": "Lương 10 triệu + phụ cấp kiêm nhiệm 1 triệu",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "An Ngọc Sơn",
+  "position": "CTV kho",
+  "department": null,
+  "change_type": null,
+  "note": "Lương là 5,3 triệu + Thưởng 1 tháng lương: 7,5 triệu",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Hồ Nguyễn Thị Na",
+  "position": "Nhân viên kho Đà Nẵng",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Tính lương đến hết ngày 25/1/2026 + Thưởng 1 tháng lương 8 triệu",
+  "effective_date": "2026-01-24"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Huỳnh Công Khanh",
+  "position": "Nhân viên kho Đà Nẵng",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Tính lương đến hết ngày 25/1/2026 + Thưởng 1 tháng lương 8 triệu",
+  "effective_date": "2026-01-24"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "ĐÀO DANH THỊNH",
+  "position": "NV KHO",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "LÊ VĂN TOÀN",
+  "position": "PHÓ KHO HN",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "ĐỖ THỊ THƯƠNG",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "LÊ BÁ TIẾN",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "DƯƠNG THANH PHONG",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "THÁI HOÀNG LINH ĐAN",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "CAO HOÀNG VŨ",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "HỒ NGUYỄN THỊ NA",
+  "position": "NV",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 200k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thu Huyền",
+  "position": "Nhân viên TVBH",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 250k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thu Hà",
+  "position": "Nhân viên TVBH",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 250k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Lê Thị Hồng Huế",
+  "position": "Nhân viên TVBH",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 250k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Phạm Thị Mỹ Hằng",
+  "position": "Nhân viên TVBH",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 250k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Thị Nhài",
+  "position": "Nhân viên",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 100k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Trần Thị Hương Liên",
+  "position": "Nhân viên",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 100k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Dung",
+  "position": "Nhân viên",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 100k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Như Ý",
+  "position": "Nhân viên",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 100k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Phạm Thị Ngân",
+  "position": "Nhân viên",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Trực tết dương lịch cộng 100k",
+  "effective_date": "2026-01-01"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Bùi Văn Duy",
+  "position": "Nhân viên IT",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Ngày 1-12/01/2026 Lương là 19 triệu như công nghệ. Còn từ ngày 13/01/2026 lương là 15 triệu.",
+  "effective_date": "2026-01-13"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Diêm Thị Hường",
+  "position": "Kế toán trưởng",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Lương 35 triệu thử việc 02 tháng 85%. Trong đó lương cố định 80%. Lương biến đổi 20%",
+  "effective_date": "2026-01-12"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Tấn Việt",
+  "position": "Trưởng phòng Pháp chế - Kiểm soát Nội bộ",
+  "department": null,
+  "change_type": "Bổ sung/giảm trừ",
+  "note": "Thu nhập chính thức: 37 triệu. Thử việc 85%. Trong đó lương cố định 80%. Lương biến đổi 20%",
+  "effective_date": "2026-01-26"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Bùi Minh Tuấn",
+  "position": "Giám đốc Marketing",
+  "department": null,
+  "change_type": null,
+  "note": "- Trong thời gian thử việc nhận 100% lương + thực đạt % doanh thu + thực đạt KPI. ( Tổng là 60 triệu)\n- Thu nhập chính thức là 30 triệu lương cứng và 30 triệu lương KPI.",
+  "effective_date": "2026-01-24"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Ngọc Thanh Vân",
+  "position": "Quản lý kho HCM",
+  "department": null,
+  "change_type": null,
+  "note": "Hỗ trợ ns không tham dự tất niên: 1.000.000đ",
+  "effective_date": "2026-01-31"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Thái Hoàng Linh Đan",
+  "position": "Nhân viên kho HCM",
+  "department": null,
+  "change_type": null,
+  "note": "Hỗ trợ ns không tham dự tất niên: 1.000.000đ",
+  "effective_date": "2026-01-31"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Dương Thanh Phong",
+  "position": "Nhân viên kho HCM",
+  "department": null,
+  "change_type": null,
+  "note": "Hỗ trợ ns không tham dự tất niên: 1.000.000đ",
+  "effective_date": "2026-01-31"
+ },
+ {
+  "month": "01/2026",
+  "employee_code": null,
+  "full_name": "Cao Hoàng Vũ",
+  "position": "Nhân viên kho HCM",
+  "department": null,
+  "change_type": null,
+  "note": "Hỗ trợ ns không tham dự tất niên: 1.000.000đ",
+  "effective_date": "2026-01-31"
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Nhật Lệ",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Lương 11 triệu trong đó cố định là 8,5 triệu, KPI là 2,5 triệu. Vẫn giữ nguyên phụ cấp ăn ca",
+  "effective_date": "2026-02-01"
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Phạm Văn Cường",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Lương 16 triệu trong đó Lương cứng là: 12,800 và KPI là 3,2 tr",
+  "effective_date": null
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Minh Tú",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Lương 13,5 triệu trong đó cố định là 10,8 triệu, KPI là 2,7 triệu. Vẫn giữ nguyên phụ cấp ăn ca",
+  "effective_date": "2026-02-01"
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Tô Văn Nam",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Lương là 13 triệu",
+  "effective_date": "2026-02-01"
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Đặng Văn Trường",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Đăng ký thành công 1 người phụ thuộc được ghi nhận vào kỳ lương tháng 2 vì cái này trả lương vào 15/3. Đăng ký thành công tháng 3",
+  "effective_date": null
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Trực tết bên CSKH, TVBH, ECOM",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Xem bảng chi tiết",
+  "effective_date": null
+ },
+ {
+  "month": "02/2026",
+  "employee_code": null,
+  "full_name": "Đào Danh Hồng Minh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Bổ sung 2 triệu tiền chạy ads của MKT không tính vào KPI",
+  "effective_date": "2026-02-01"
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đỗ Thị Thu Hằng",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 13 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Lan Phương",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 12 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Trần Duy Phương",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 15 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đồng Huy Đoàn",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Xóa khỏi bảng lương tháng 3",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Lê Trọng Sơn",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 3 triệu thành tích xuất sắc",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Lan Anh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 3 triệu thành tích xuất sắc",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Thị Thùy Linh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 18 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Ánh Dương",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 14 triệu đồng. Đi làm trở lại báo tăng bảo hiểm tháng 4",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Phương Liên",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 20 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Trần Anh Tuấn",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 37,7 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Vũ Thị Bích Hồng",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 14 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đặng Thị Quỳnh Trang",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 13 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đặng Thị Quỳnh Trang",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Mức thu nhập 13 triệu đồng. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đào Danh Hồng Minh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Bổ sung 2 triệu tiền chạy ads của MKT không tính vào KPI",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Công Ngọc Ánh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 1 triệu thành tích xuất sắc",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thúy Hằng",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 1 triệu thành tích xuất sắc",
+  "effective_date": null
+ },
+ {
+  "month": "03/2026",
+  "employee_code": null,
+  "full_name": "Đào Danh Hồng Thịnh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Cắt mua hàng từ ngày 17/3/2026. 3 triệu.=> 1.375.000đ",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Văn Toàn",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Tăng 500k",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Đào Danh Hồng Minh",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Tăng từ 2 triệu lên 5 triệu tiền chạy ads của MKT không tính vào KPI",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Hương Giang",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Tăng mức thu nhập từ 16 triệu lên 17,6 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Đào Thị Hồng Liên",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Chuyển sang Ecom. Lương 85% mức 9 triệu. Là 7.650. Tháng 5 đánh giá lại",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Trần Hồng Quyên",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Chuyển sang Ecom. Lương 85% mức 11 triệu. Là 9.350. Tháng 5 đánh giá lại",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Cao Huy Bình",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 4 triệu đồng thành tích xuất sắc",
+  "effective_date": "2026-04-01"
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Phạm Khánh Ly",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 4 triệu đồng thành tích xuất sắc",
+  "effective_date": "2026-04-01"
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Trần Thị Huệ",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 6 triệu đồng thành tích xuất sắc",
+  "effective_date": "2026-04-01"
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Vũ Thị Lan",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng 6 triệu đồng thành tích xuất sắc",
+  "effective_date": "2026-04-01"
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Bộ phận kho vận tính 300% lương ngày nghỉ lễ : Đỗ Thị Thương: 1.167.000.\nLê Bá Tiến: 1.167.000\nNguyễn Thị Hoài Thương: 1.184.769\nDương Thanh Phong: 1.167.000\nThái Hoàng Linh Đan: 1.167.000\nCao Hoàng Vũ: 583.500",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "TVBH sẽ có đề xuất hỗ trợ trực là 1 triệu đồng/ team",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Huy Hoàng",
+  "position": "Trưởng bộ phận Quản lý sàn TMĐT",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 25 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Đức Tấn",
+  "position": "NV Thiết kế",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 12 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Mai Thị Vân",
+  "position": "Chuyên viên Kế toán Tổng hợp",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 18 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Xuyền",
+  "position": "Nhân viên vận hành sàn Lazada",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương:13 triệu. Thử việc 100%. Áp KPI. Lương đóng BHXH 6 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Phú Dũng",
+  "position": "Nhân viên Digital Marketing",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương10,000,000đ / tháng\nTrong đó: Lương cơ bản 75% + Lương KPI 25%;\nKPI: GMV đạt 100 triệu; CIR = 50%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Ngọc",
+  "position": "Chuyên viên C&B",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 18 triệu. Thử việc 2 tháng 85% + Phụ cấp ăn trưa 30k/ ngày",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Thị Hương Thảo",
+  "position": "Nhân viên VJ",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 12 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Mai Trần Thanh Phương",
+  "position": "Nhân viên Booking Affiliate",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 14 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Thị Kim Tuyến",
+  "position": "Nhân viên Nghiên cứu và bào chế thực phẩm",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 13 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Phương Nam",
+  "position": "Chuyên viên bộ phận Shopee",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương:25 triệu. Thử việc 100%. Áp KPI. Lương đóng BHXH 6 triệu",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Đặng Hoàng Anh",
+  "position": "Nhân viên Quản lý sàn TMĐT",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương: 10 triệu. Thử việc 2 tháng 85%",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Duy Bình",
+  "position": "Lead Digital",
+  "department": null,
+  "change_type": null,
+  "note": "Lương cứng: 15.000.000đ/ tháng Thử việc 2 tháng 100%\nLương KPI: 1% doanh thu điều kiện ràng buộc theo chi phí có giới hạn;\nLương đóng BHXH: 7.000.000đ",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Phạm Thị Hồng",
+  "position": "Trưởng phòng kế toán",
+  "department": null,
+  "change_type": null,
+  "note": "Tính gộp vào một file tính lương ngày 7,11,17,18,25 tháng 4. Của 3 công ty vào ozo.",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Trình Hữu Quang Duy",
+  "position": "Thực tập sinh Quản lý sàn TMĐT",
+  "department": null,
+  "change_type": null,
+  "note": "Mức lương 4 triệu đồng",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Hương Thảo",
+  "position": "VJ",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 320.831",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Nguyễn Hiền Phương",
+  "position": "VJ",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 213.887",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lê Mạnh hà",
+  "position": "Content",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 213.887",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Trần Vũ Hà",
+  "position": "Editor",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 106.944",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Minh Tú",
+  "position": "Lead Meadia",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 53.472",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Hoàng Ánh Dương",
+  "position": "Content",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 53.472",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Tòng Thị Quỳnh",
+  "position": "Thiết kế",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 53.472",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Lương Thúy Hiền",
+  "position": "Thiết kế",
+  "department": null,
+  "change_type": null,
+  "note": "Thưởng doanh thu đũa phụ khoa: 53.472",
+  "effective_date": null
+ },
+ {
+  "month": "04/2026",
+  "employee_code": null,
+  "full_name": "Trương Thị Hồng Phượng",
+  "position": "Phó Giám Đốc",
+  "department": null,
+  "change_type": null,
+  "note": "Điều chỉnh thu nhập 45 triệu gross",
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 7",
+  "employee_code": null,
+  "full_name": "Bù tiền thưởng Tối ưu chi phí mua hàng cho Trang tháng trước thiếu: 766,323",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 7",
+  "employee_code": null,
+  "full_name": "Điều chỉnh lại mức lương của Trọng Sơn 17tr",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 7",
+  "employee_code": null,
+  "full_name": "Ms Yến đăng ký thêm 1 NPT",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Từ Tháng 7",
+  "employee_code": null,
+  "full_name": "Theo quy định từ 01/2026 GD công ty có hưởng lương bắt buộc phải đóng BHTN => Bắt đầu thu từ tháng 07/2026. Truy thu từ tháng 01/2026",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 8",
+  "employee_code": null,
+  "full_name": "Điều chỉnh thu nhập Mr Bình lên 45tr, mức đóng bhxh 17.5tr từ 8/2026",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 8",
+  "employee_code": null,
+  "full_name": "Từ tháng 8/2026 toàn bộ team Truyền Thông của Hải na dừng hoạt động",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ },
+ {
+  "month": "Tháng 8",
+  "employee_code": null,
+  "full_name": "Khấu trừ Hoàng Anh Ecom 10tr.\nTháng 7: 8,329,014\nTháng 8: 1,670,986",
+  "position": null,
+  "department": null,
+  "change_type": null,
+  "note": null,
+  "effective_date": null
+ }
+]

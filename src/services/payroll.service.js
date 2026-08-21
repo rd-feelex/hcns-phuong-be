@@ -205,7 +205,8 @@ async function getBaselines(month) {
 
 async function preview(month, { standardWorkdays = 26 } = {}) {
   const [emps, baselines, att, inputs] = await Promise.all([
-    supabase.from('employees').select('*').eq('status', 'active'),
+    // Chỉ tính lương nhân viên chính thức — CTV/TTS có bảng lương riêng
+    supabase.from('employees').select('*').eq('status', 'active').eq('employee_type', 'staff'),
     getBaselines(month),
     supabase.from('attendance_records').select('*').eq('month', month),
     supabase.from('payroll_inputs').select('*').eq('month', month),

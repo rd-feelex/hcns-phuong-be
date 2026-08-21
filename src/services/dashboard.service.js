@@ -3,7 +3,7 @@ const supabase = require('../config/supabase');
 async function stats(month) {
   const [{ data: employees, error: e1 }, { data: salaries, error: e2 }] =
     await Promise.all([
-      supabase.from('employees').select('employee_code, company, department, status'),
+      supabase.from('employees').select('employee_code, company, department, status, employee_type'),
       month
         ? supabase.from('salary_records').select('*').eq('month', month)
         : supabase.from('salary_records').select('*'),
@@ -69,7 +69,12 @@ async function stats(month) {
   return {
     month,
     company_departments,
-    total_employees: employees.filter((e) => e.status === 'active').length,
+    total_employees: employees.filter(
+      (e) => e.status === 'active' && (e.employee_type || 'staff') === 'staff'
+    ).length,
+    total_contractors: employees.filter(
+      (e) => e.status === 'active' && ['ctv', 'intern'].includes(e.employee_type)
+    ).length,
     total_net_pay: sum('final_received'),
     total_income: sum('total_income'),
     total_tax: sum('personal_income_tax'),

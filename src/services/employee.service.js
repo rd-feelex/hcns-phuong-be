@@ -1,6 +1,6 @@
 const supabase = require('../config/supabase');
 
-async function list({ search, company, department, status, page = 1, limit = 20 }) {
+async function list({ search, company, department, status, type, page = 1, limit = 20 }) {
   const from = (page - 1) * limit;
   let query = supabase
     .from('employees')
@@ -12,6 +12,9 @@ async function list({ search, company, department, status, page = 1, limit = 20 
   if (company) query = query.eq('company', company);
   if (department) query = query.eq('department', department);
   if (status) query = query.eq('status', status);
+  if (type === 'staff') query = query.eq('employee_type', 'staff');
+  else if (type === 'contractor') query = query.in('employee_type', ['ctv', 'intern']);
+  else if (type) query = query.eq('employee_type', type);
 
   const { data, count, error } = await query;
   if (error) throw new Error(error.message);
@@ -27,23 +30,24 @@ async function getByCode(code) {
   if (error) throw new Error(error.message);
   if (!employee) return null;
 
-  const [salaries, attendance, summary] = await Promise.all([
+  const byCode = (table, order = 'month') =>
     supabase
-      .from('salary_records')
+      .from(table)
       .select('*')
       .eq('employee_code', code)
-      .order('month', { ascending: false }),
-    supabase
-      .from('attendance_records')
-      .select('*')
-      .eq('employee_code', code)
-      .order('month', { ascending: false }),
-    supabase
-      .from('attendance_summary')
-      .select('*')
-      .eq('employee_code', code)
-      .order('month', { ascending: false }),
-  ]);
+      .order(order, { ascending: false });
+
+  const [salaries, attendance, summary, ctvSalaries, arrears, ebitda, changes, kpi] =
+    await Promise.all([
+      byCode('salary_records'),
+      byCode('attendance_records'),
+      byCode('attendance_summary'),
+      byCode('contractor_salaries'),
+      byCode('arrears_details'),
+      byCode('ebitda_bonuses'),
+      byCode('salary_changes', 'effective_date'),
+      byCode('kpi_details'),
+    ]);
   for (const r of [salaries, attendance, summary]) {
     if (r.error) throw new Error(r.error.message);
   }
@@ -53,6 +57,11 @@ async function getByCode(code) {
     salaries: salaries.data,
     attendance: attendance.data,
     attendance_summary: summary.data,
+    contractor_salaries: ctvSalaries.data || [],
+    arrears: arrears.data || [],
+    ebitda: ebitda.data || [],
+    salary_changes: changes.data || [],
+    kpi_details: kpi.data || [],
   };
 }
 
