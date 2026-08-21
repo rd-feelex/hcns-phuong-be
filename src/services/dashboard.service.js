@@ -32,11 +32,26 @@ async function stats(month) {
     department: empMap[s.employee_code]?.department,
   }));
 
-  // Phòng ban nhóm theo từng công ty: [{ company, total, departments: [{name, value}] }]
-  const byCompany = {};
+  // Nhân sự theo công ty đếm theo BẢNG LƯƠNG từng công ty (một người nhận lương
+  // ở nhiều công ty được đếm ở từng nơi — khớp với số dòng của từng sheet Excel).
+  const empMap0 = Object.fromEntries(employees.map((e) => [e.employee_code, e]));
+  const pairs = new Map(); // "company|code" -> {company, code}
+  for (const s of salaries) {
+    const comp = s.company || empMap0[s.employee_code]?.company || 'Khác';
+    pairs.set(`${comp}|${s.employee_code}`, { comp, code: s.employee_code });
+  }
+  // Nhân viên chưa có bảng lương vẫn được đếm theo công ty chính
   for (const e of employees) {
     const comp = e.company || 'Khác';
-    const dept = e.department || 'Chưa phân phòng ban';
+    if (![...pairs.keys()].some((k) => k.endsWith(`|${e.employee_code}`))) {
+      pairs.set(`${comp}|${e.employee_code}`, { comp, code: e.employee_code });
+    }
+  }
+
+  // Phòng ban nhóm theo từng công ty: [{ company, total, departments: [{name, value}] }]
+  const byCompany = {};
+  for (const { comp, code } of pairs.values()) {
+    const dept = empMap0[code]?.department || 'Chưa phân phòng ban';
     byCompany[comp] = byCompany[comp] || { company: comp, total: 0, departments: {} };
     byCompany[comp].total += 1;
     byCompany[comp].departments[dept] = (byCompany[comp].departments[dept] || 0) + 1;
@@ -60,7 +75,7 @@ async function stats(month) {
     total_tax: sum('personal_income_tax'),
     total_insurance: sum('social_insurance_total'),
     total_company_cost: sum('company_cost'),
-    headcount_by_company: groupBy(employees, (e) => e.company, () => 1),
+    headcount_by_company: groupBy([...pairs.values()], (p) => p.comp, () => 1),
     headcount_by_department: groupBy(employees, (e) => e.department, () => 1),
     payroll_by_company: groupBy(salaries, (s) => s.company, (s) => Number(s.final_received) || 0),
     payroll_by_department: groupBy(salWithDept, (s) => s.department, (s) => Number(s.final_received) || 0),
