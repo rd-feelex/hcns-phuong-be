@@ -2,7 +2,51 @@
  {
   "employee_code": "OZO06042021VVT",
   "month": "2026-07",
-  "kpi_percent": 1.0,
+  "kpi_percent": 0.0,
+  "business_bonus": 0,
+  "incentive_bonus": 0,
+  "other_deduction": 0,
+  "arrears": 0,
+  "arrears_note": null,
+  "advance_paid": 9000000.0
+ },
+ {
+  "employee_code": "XTRAD15052026",
+  "month": "2026-07",
+  "kpi_percent": 0.0,
+  "business_bonus": 0,
+  "incentive_bonus": 0,
+  "other_deduction": 0,
+  "arrears": 0,
+  "arrears_note": null,
+  "advance_paid": 1008000.0
+ },
+ {
+  "employee_code": "XC03072025",
+  "month": "2026-07",
+  "kpi_percent": 18797567.0,
+  "business_bonus": 1050000.0,
+  "incentive_bonus": 180000.0,
+  "other_deduction": 60000.0,
+  "arrears": 480000.0,
+  "arrears_note": "90000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XC23062025",
+  "month": "2026-07",
+  "kpi_percent": 16606159.0,
+  "business_bonus": 1050000.0,
+  "incentive_bonus": 180000.0,
+  "other_deduction": 60000.0,
+  "arrears": 480000.0,
+  "arrears_note": "90000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XC13072026",
+  "month": "2026-07",
+  "kpi_percent": 3057820.0,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
@@ -11,11 +55,77 @@
   "advance_paid": 0
  },
  {
+  "employee_code": "XE18102023MN",
+  "month": "2026-07",
+  "kpi_percent": 27652496.01,
+  "business_bonus": 1750000.0,
+  "incentive_bonus": 300000.0,
+  "other_deduction": 100000.0,
+  "arrears": 800000.0,
+  "arrears_note": "150000",
+  "advance_paid": 34936270.0
+ },
+ {
+  "employee_code": "XE06042026T",
+  "month": "2026-07",
+  "kpi_percent": 9228690.0,
+  "business_bonus": 1050000.0,
+  "incentive_bonus": 180000.0,
+  "other_deduction": 60000.0,
+  "arrears": 480000.0,
+  "arrears_note": "90000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XE20032026",
+  "month": "2026-07",
+  "kpi_percent": 9133509.92,
+  "business_bonus": 1050000.0,
+  "incentive_bonus": 180000.0,
+  "other_deduction": 60000.0,
+  "arrears": 480000.0,
+  "arrears_note": "90000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XE16042026",
+  "month": "2026-07",
+  "kpi_percent": 14532456.17,
+  "business_bonus": 1225000.0,
+  "incentive_bonus": 210000.0,
+  "other_deduction": 70000.0,
+  "arrears": 560000.0,
+  "arrears_note": "105000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XG06042021P",
+  "month": "2026-07",
+  "kpi_percent": 36546290.0,
+  "business_bonus": 3150000.0,
+  "incentive_bonus": 540000.0,
+  "other_deduction": 180000.0,
+  "arrears": 1440000.0,
+  "arrears_note": "270000",
+  "advance_paid": 0
+ },
+ {
+  "employee_code": "XG11072025",
+  "month": "2026-07",
+  "kpi_percent": 19040546.0,
+  "business_bonus": 1050000.0,
+  "incentive_bonus": 180000.0,
+  "other_deduction": 60000.0,
+  "arrears": 480000.0,
+  "arrears_note": "90000",
+  "advance_paid": 0
+ },
+ {
   "employee_code": "OZO05062023",
   "month": "2026-07",
   "kpi_percent": 1.0,
   "business_bonus": 8388685.33,
-  "incentive_bonus": 0,
+  "incentive_bonus": 4790045.55,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
@@ -26,7 +136,7 @@
   "month": "2026-07",
   "kpi_percent": 0.8,
   "business_bonus": 0,
-  "incentive_bonus": 0,
+  "incentive_bonus": 6935064.05,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
@@ -48,7 +158,7 @@
   "month": "2026-07",
   "kpi_percent": 1.0,
   "business_bonus": 5911427.0,
-  "incentive_bonus": 0,
+  "incentive_bonus": 8366123.25,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
@@ -59,7 +169,7 @@
   "month": "2026-07",
   "kpi_percent": 1.0,
   "business_bonus": 0,
-  "incentive_bonus": 0,
+  "incentive_bonus": 49610562.2,
   "other_deduction": 0,
   "arrears": 11970946.0,
   "arrears_note": "Thưởng DS kênh MT + tối ưu chi phí mua hàng tháng 6+7/2026",
@@ -70,7 +180,7 @@
   "month": "2026-07",
   "kpi_percent": 0.9,
   "business_bonus": 0,
-  "incentive_bonus": 0,
+  "incentive_bonus": 11227286.4,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
@@ -114,7 +224,7 @@
   "month": "2026-07",
   "kpi_percent": 1,
   "business_bonus": 0,
-  "incentive_bonus": 0,
+  "incentive_bonus": 4875148.5,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
@@ -123,7 +233,7 @@
  {
   "employee_code": "XTRAD22102022",
   "month": "2026-07",
-  "kpi_percent": 11576700.0,
+  "kpi_percent": 45000725.2,
   "business_bonus": 2012500.0,
   "incentive_bonus": 345000.0,
   "other_deduction": 115000.0,
@@ -134,7 +244,7 @@
  {
   "employee_code": "XTRAD01122022",
   "month": "2026-07",
-  "kpi_percent": 6862560.0,
+  "kpi_percent": 16161029.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -145,7 +255,7 @@
  {
   "employee_code": "XTRAD01062023",
   "month": "2026-07",
-  "kpi_percent": 5887060.0,
+  "kpi_percent": 14027671.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -156,7 +266,7 @@
  {
   "employee_code": "XTRAD26082024",
   "month": "2026-07",
-  "kpi_percent": 5911560.0,
+  "kpi_percent": 14026021.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -167,7 +277,7 @@
  {
   "employee_code": "XTRAD25112024",
   "month": "2026-07",
-  "kpi_percent": 5936060.0,
+  "kpi_percent": 14045380.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -178,7 +288,7 @@
  {
   "employee_code": "XTRAD01062026",
   "month": "2026-07",
-  "kpi_percent": 5915060.0,
+  "kpi_percent": 7090060.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -189,7 +299,7 @@
  {
   "employee_code": "XTRAD03042023",
   "month": "2026-07",
-  "kpi_percent": 8771782.94,
+  "kpi_percent": 15063148.19,
   "business_bonus": 929250.0,
   "incentive_bonus": 159300.0,
   "other_deduction": 53100.0,
@@ -200,7 +310,7 @@
  {
   "employee_code": "XTRAD31052023",
   "month": "2026-07",
-  "kpi_percent": 11579891.99,
+  "kpi_percent": 22136643.74,
   "business_bonus": 929250.0,
   "incentive_bonus": 159300.0,
   "other_deduction": 53100.0,
@@ -222,7 +332,7 @@
  {
   "employee_code": "XTRAD07032025",
   "month": "2026-07",
-  "kpi_percent": 8007832.89,
+  "kpi_percent": 17369995.14,
   "business_bonus": 929250.0,
   "incentive_bonus": 159300.0,
   "other_deduction": 53100.0,
@@ -233,7 +343,7 @@
  {
   "employee_code": "XTRAD01042024P",
   "month": "2026-07",
-  "kpi_percent": 10128359.85,
+  "kpi_percent": 20270885.1,
   "business_bonus": 929250.0,
   "incentive_bonus": 159300.0,
   "other_deduction": 53100.0,
@@ -244,7 +354,7 @@
  {
   "employee_code": "XTRAD18062024",
   "month": "2026-07",
-  "kpi_percent": -12736112.0,
+  "kpi_percent": 54608151.5,
   "business_bonus": 2012500.0,
   "incentive_bonus": 345000.0,
   "other_deduction": 115000.0,
@@ -255,7 +365,7 @@
  {
   "employee_code": "XTRAD02082022",
   "month": "2026-07",
-  "kpi_percent": -7646291.0,
+  "kpi_percent": 23236887.14,
   "business_bonus": 1225000.0,
   "incentive_bonus": 210000.0,
   "other_deduction": 70000.0,
@@ -266,7 +376,7 @@
  {
   "employee_code": "XTRAD14042025",
   "month": "2026-07",
-  "kpi_percent": -6380758.0,
+  "kpi_percent": 8679242.0,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
@@ -277,7 +387,7 @@
  {
   "employee_code": "XTRAD27052024L",
   "month": "2026-07",
-  "kpi_percent": -3710460.0,
+  "kpi_percent": 29654848.07,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -288,7 +398,7 @@
  {
   "employee_code": "XTRAD13052024",
   "month": "2026-07",
-  "kpi_percent": -7430125.0,
+  "kpi_percent": 26106434.73,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -299,7 +409,7 @@
  {
   "employee_code": "XTRAD06032025Q",
   "month": "2026-07",
-  "kpi_percent": -6636154.0,
+  "kpi_percent": 8631915.9,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -310,7 +420,7 @@
  {
   "employee_code": "XTRAD23042026",
   "month": "2026-07",
-  "kpi_percent": -6988604.0,
+  "kpi_percent": 10279322.49,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -321,7 +431,7 @@
  {
   "employee_code": "XTRAD06042026N",
   "month": "2026-07",
-  "kpi_percent": -10150127.0,
+  "kpi_percent": 22382521.48,
   "business_bonus": 1575000.0,
   "incentive_bonus": 270000.0,
   "other_deduction": 90000.0,
@@ -343,7 +453,7 @@
  {
   "employee_code": "XTRAD13052025",
   "month": "2026-07",
-  "kpi_percent": -5055027.0,
+  "kpi_percent": 22871541.63,
   "business_bonus": 1225000.0,
   "incentive_bonus": 210000.0,
   "other_deduction": 70000.0,
@@ -354,7 +464,7 @@
  {
   "employee_code": "XTRAD05052025A",
   "month": "2026-07",
-  "kpi_percent": 5491708.0,
+  "kpi_percent": 38491420.75,
   "business_bonus": 1575000.0,
   "incentive_bonus": 270000.0,
   "other_deduction": 90000.0,
@@ -365,7 +475,7 @@
  {
   "employee_code": "XTRAD23042025",
   "month": "2026-07",
-  "kpi_percent": 1012072.0,
+  "kpi_percent": 19176605.0,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -376,7 +486,7 @@
  {
   "employee_code": "XTRAD06052025",
   "month": "2026-07",
-  "kpi_percent": -836923.08,
+  "kpi_percent": 427692.31,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
@@ -387,7 +497,7 @@
  {
   "employee_code": "XTRAD12052025H",
   "month": "2026-07",
-  "kpi_percent": 614897.0,
+  "kpi_percent": 18686787.0,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -398,7 +508,7 @@
  {
   "employee_code": "XTRAD19052025B",
   "month": "2026-07",
-  "kpi_percent": 725750.0,
+  "kpi_percent": 18901541.0,
   "business_bonus": 962500.0,
   "incentive_bonus": 165000.0,
   "other_deduction": 55000.0,
@@ -409,7 +519,7 @@
  {
   "employee_code": "XTRAD27072026",
   "month": "2026-07",
-  "kpi_percent": -1560615.38,
+  "kpi_percent": 857961.54,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
@@ -420,7 +530,7 @@
  {
   "employee_code": "XTRAD06042026B",
   "month": "2026-07",
-  "kpi_percent": -6199638.0,
+  "kpi_percent": 17118824.1,
   "business_bonus": 1575000.0,
   "incentive_bonus": 270000.0,
   "other_deduction": 90000.0,
@@ -431,7 +541,7 @@
  {
   "employee_code": "XTRAD19032025B",
   "month": "2026-07",
-  "kpi_percent": -8030000.0,
+  "kpi_percent": 10410442.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -442,7 +552,7 @@
  {
   "employee_code": "XTRAD01042025A",
   "month": "2026-07",
-  "kpi_percent": 690000.0,
+  "kpi_percent": 4703407.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -453,7 +563,7 @@
  {
   "employee_code": "XTRAD17022025D",
   "month": "2026-07",
-  "kpi_percent": 720000.0,
+  "kpi_percent": 3404084.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -464,7 +574,7 @@
  {
   "employee_code": "XTRAD07072026",
   "month": "2026-07",
-  "kpi_percent": -4823130.0,
+  "kpi_percent": 2095870.0,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
@@ -475,7 +585,7 @@
  {
   "employee_code": "XTRAD20102023",
   "month": "2026-07",
-  "kpi_percent": -8000000.0,
+  "kpi_percent": 12623376.03,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -486,7 +596,7 @@
  {
   "employee_code": "XTRAD13092024",
   "month": "2026-07",
-  "kpi_percent": -7795600.0,
+  "kpi_percent": 10625064.05,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -497,7 +607,7 @@
  {
   "employee_code": "XTRAD20042026C",
   "month": "2026-07",
-  "kpi_percent": -8000000.0,
+  "kpi_percent": 7467532.03,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -508,7 +618,7 @@
  {
   "employee_code": "XTRAD20042026A",
   "month": "2026-07",
-  "kpi_percent": -6130000.0,
+  "kpi_percent": 9337532.03,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -519,7 +629,7 @@
  {
   "employee_code": "XTRAD18082025",
   "month": "2026-07",
-  "kpi_percent": -7970000.0,
+  "kpi_percent": 9215064.05,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -530,7 +640,7 @@
  {
   "employee_code": "XTRAD09062025B",
   "month": "2026-07",
-  "kpi_percent": -15470000.0,
+  "kpi_percent": 54036918.0,
   "business_bonus": 2012500.0,
   "incentive_bonus": 345000.0,
   "other_deduction": 115000.0,
@@ -541,7 +651,7 @@
  {
   "employee_code": "XTRAD05052025G",
   "month": "2026-07",
-  "kpi_percent": -7500000.0,
+  "kpi_percent": 24908035.0,
   "business_bonus": 1225000.0,
   "incentive_bonus": 210000.0,
   "other_deduction": 70000.0,
@@ -552,7 +662,7 @@
  {
   "employee_code": "XTRAD27052025",
   "month": "2026-07",
-  "kpi_percent": -5970000.0,
+  "kpi_percent": 16283413.0,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -563,7 +673,7 @@
  {
   "employee_code": "XTRAD05112025",
   "month": "2026-07",
-  "kpi_percent": -15145600.0,
+  "kpi_percent": 44611695.75,
   "business_bonus": 2012500.0,
   "incentive_bonus": 345000.0,
   "other_deduction": 115000.0,
@@ -583,20 +693,9 @@
   "advance_paid": 0
  },
  {
-  "employee_code": "XTRAD15052026",
-  "month": "2026-07",
-  "kpi_percent": -8693200.0,
-  "business_bonus": 2012500.0,
-  "incentive_bonus": 345000.0,
-  "other_deduction": 115000.0,
-  "arrears": 920000.0,
-  "arrears_note": "172500",
-  "advance_paid": 0
- },
- {
   "employee_code": "XTRAD30032026",
   "month": "2026-07",
-  "kpi_percent": -8000000.0,
+  "kpi_percent": 12508336.47,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -607,7 +706,7 @@
  {
   "employee_code": "XTRAD02032026",
   "month": "2026-07",
-  "kpi_percent": -8000000.0,
+  "kpi_percent": 10201340.78,
   "business_bonus": 1050000.0,
   "incentive_bonus": 180000.0,
   "other_deduction": 60000.0,
@@ -618,111 +717,12 @@
  {
   "employee_code": "XTRAD30072026",
   "month": "2026-07",
-  "kpi_percent": -531960.0,
+  "kpi_percent": 488040.0,
   "business_bonus": 0,
   "incentive_bonus": 0,
   "other_deduction": 0,
   "arrears": 0,
   "arrears_note": null,
-  "advance_paid": 0
- },
- {
-  "employee_code": "XC03072025",
-  "month": "2026-07",
-  "kpi_percent": 5750000.0,
-  "business_bonus": 1050000.0,
-  "incentive_bonus": 180000.0,
-  "other_deduction": 60000.0,
-  "arrears": 480000.0,
-  "arrears_note": "90000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XC23062025",
-  "month": "2026-07",
-  "kpi_percent": 5750000.0,
-  "business_bonus": 1050000.0,
-  "incentive_bonus": 180000.0,
-  "other_deduction": 60000.0,
-  "arrears": 480000.0,
-  "arrears_note": "90000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XC13072026",
-  "month": "2026-07",
-  "kpi_percent": 3057820.0,
-  "business_bonus": 0,
-  "incentive_bonus": 0,
-  "other_deduction": 0,
-  "arrears": 0,
-  "arrears_note": null,
-  "advance_paid": 0
- },
- {
-  "employee_code": "XE18102023MN",
-  "month": "2026-07",
-  "kpi_percent": 11500000.0,
-  "business_bonus": 1750000.0,
-  "incentive_bonus": 300000.0,
-  "other_deduction": 100000.0,
-  "arrears": 800000.0,
-  "arrears_note": "150000",
-  "advance_paid": 34936270.0
- },
- {
-  "employee_code": "XE06042026T",
-  "month": "2026-07",
-  "kpi_percent": 5000000.0,
-  "business_bonus": 1050000.0,
-  "incentive_bonus": 180000.0,
-  "other_deduction": 60000.0,
-  "arrears": 480000.0,
-  "arrears_note": "90000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XE20032026",
-  "month": "2026-07",
-  "kpi_percent": 5000000.0,
-  "business_bonus": 1050000.0,
-  "incentive_bonus": 180000.0,
-  "other_deduction": 60000.0,
-  "arrears": 480000.0,
-  "arrears_note": "90000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XE16042026",
-  "month": "2026-07",
-  "kpi_percent": 10500000.0,
-  "business_bonus": 1225000.0,
-  "incentive_bonus": 210000.0,
-  "other_deduction": 70000.0,
-  "arrears": 560000.0,
-  "arrears_note": "105000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XG06042021P",
-  "month": "2026-07",
-  "kpi_percent": 8000000.0,
-  "business_bonus": 3150000.0,
-  "incentive_bonus": 540000.0,
-  "other_deduction": 180000.0,
-  "arrears": 1440000.0,
-  "arrears_note": "270000",
-  "advance_paid": 0
- },
- {
-  "employee_code": "XG11072025",
-  "month": "2026-07",
-  "kpi_percent": 6250000.0,
-  "business_bonus": 1050000.0,
-  "incentive_bonus": 180000.0,
-  "other_deduction": 60000.0,
-  "arrears": 480000.0,
-  "arrears_note": "90000",
   "advance_paid": 0
  }
 ]

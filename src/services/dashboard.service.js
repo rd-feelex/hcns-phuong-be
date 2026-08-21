@@ -32,8 +32,28 @@ async function stats(month) {
     department: empMap[s.employee_code]?.department,
   }));
 
+  // Phòng ban nhóm theo từng công ty: [{ company, total, departments: [{name, value}] }]
+  const byCompany = {};
+  for (const e of employees) {
+    const comp = e.company || 'Khác';
+    const dept = e.department || 'Chưa phân phòng ban';
+    byCompany[comp] = byCompany[comp] || { company: comp, total: 0, departments: {} };
+    byCompany[comp].total += 1;
+    byCompany[comp].departments[dept] = (byCompany[comp].departments[dept] || 0) + 1;
+  }
+  const company_departments = Object.values(byCompany)
+    .map((c) => ({
+      company: c.company,
+      total: c.total,
+      departments: Object.entries(c.departments)
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => b.value - a.value),
+    }))
+    .sort((a, b) => b.total - a.total);
+
   return {
     month,
+    company_departments,
     total_employees: employees.filter((e) => e.status === 'active').length,
     total_net_pay: sum('final_received'),
     total_income: sum('total_income'),
