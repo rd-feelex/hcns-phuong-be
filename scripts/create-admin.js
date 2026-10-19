@@ -1,33 +1,25 @@
 /**
- * Tạo tài khoản quản trị viên đầu tiên.
+ * Tạo tài khoản quản trị viên (PostgreSQL).
  * Chạy: node scripts/create-admin.js [email] [password]
  */
 require('dotenv').config();
-const { createClient } = require('@supabase/supabase-js');
+const bcrypt = require('bcryptjs');
+const { query, pool } = require('../src/config/db');
 
 const email = process.argv[2] || 'binhtruong1415@gmail.com';
 const password = process.argv[3] || '123456';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
-
 async function main() {
-  const { data, error } = await supabase.auth.admin.createUser({
-    email,
-    password,
-    email_confirm: true,
-    user_metadata: { role: 'admin', full_name: 'Quản trị viên' },
-  });
-  if (error) {
-    if (String(error.message).toLowerCase().includes('already')) {
-      console.log(`Tài khoản ${email} đã tồn tại — bỏ qua.`);
-      return;
-    }
-    throw new Error(error.message);
-  }
-  console.log(`✔ Đã tạo quản trị viên: ${data.user.email} (role: admin)`);
+  const hash = await bcrypt.hash(password, 10);
+  const { rows } = await query(
+    `INSERT INTO app_users (email, password_hash, role, full_name)
+     VALUES (lower($1), $2, 'admin', 'Quản trị viên')
+     ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash, role = 'admin'
+     RETURNING email`,
+    [email, hash]
+  );
+  console.log(`✔ Quản trị viên: ${rows[0].email}`);
+  await pool.end();
 }
 
 main().catch((e) => {

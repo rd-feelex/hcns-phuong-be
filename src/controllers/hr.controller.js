@@ -1,4 +1,6 @@
 const service = require('../services/hr.service');
+const leaveService = require('../services/leave.service');
+const approvalService = require('../services/approval.service');
 const { asyncHandler } = require('../middlewares/errorHandler');
 
 const changes = asyncHandler(async (req, res) => {
@@ -20,4 +22,22 @@ const contractorSalaries = asyncHandler(async (req, res) => {
   res.json(await service.contractorSalaries(req.query));
 });
 
-module.exports = { changes, arrears, ebitda, grades, kpiDetails, contractorSalaries };
+const leaveList = asyncHandler(async (req, res) => {
+  const year = Number(req.query.year) || new Date().getFullYear();
+  res.json(await leaveService.list(year));
+});
+
+const leaveSave = asyncHandler(async (req, res) => {
+  const { year, items } = req.body;
+  if (!year) return res.status(400).json({ error: 'Thiếu year' });
+  res.json(await leaveService.save(Number(year), items));
+});
+
+const approvals = asyncHandler(async (req, res) => {
+  res.json(await approvalService.list(req.query));
+});
+
+module.exports = {
+  changes, arrears, ebitda, grades, kpiDetails, contractorSalaries,
+  leaveList, leaveSave, approvals,
+};

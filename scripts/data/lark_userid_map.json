@@ -1,0 +1,434 @@
+[
+ {
+  "user_id": "7259794788554113055",
+  "name": "Trịnh Thị Yến",
+  "dept": "Phòng CSKH,OZOVN,Leader",
+  "emp_id": "XTRAD22102022"
+ },
+ {
+  "user_id": "7271866340154015775",
+  "name": "Hoang Nhai",
+  "dept": "Phòng CSKH,OZOVN",
+  "emp_id": "XTRAD01122022"
+ },
+ {
+  "user_id": "7272178237843767327",
+  "name": "Nguyễn Thị Dung",
+  "dept": "Phòng CSKH,OZOVN",
+  "emp_id": "XTRAD01062023"
+ },
+ {
+  "user_id": "7406251429369577504",
+  "name": "Như Ý",
+  "dept": "Phòng CSKH,OZOVN",
+  "emp_id": "XTRAD26082024"
+ },
+ {
+  "user_id": "7451430106465042463",
+  "name": "Phạm Ngân",
+  "dept": "Phòng CSKH,OZOVN",
+  "emp_id": "XTRAD25112024"
+ },
+ {
+  "user_id": "7648918319986151133",
+  "name": "Vũ Ánh Nguyệt",
+  "dept": "Phòng CSKH,OZOVN",
+  "emp_id": "XTRAD01062026"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Nguyễn Thị Châm",
+  "dept": "Phòng HCNS,OZOVN",
+  "emp_id": "XTRAD01082023"
+ },
+ {
+  "user_id": "7259666898256691231",
+  "name": "Nguyễn Thị Thu Hương",
+  "dept": "Phòng Kho,OZOVN",
+  "emp_id": "OZO05062023"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Đỗ Thị Thương",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD31052023"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Lê Bá Tiến",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD19032025A"
+ },
+ {
+  "user_id": "7490782457411731488",
+  "name": "Nguyễn Thị Hoài Thương",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "OZO08042025T"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Hoàng Thùy Linh",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD25052026"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Nguyễn Thị Thanh Huyền",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD22072026"
+ },
+ {
+  "user_id": "7618100828414463707",
+  "name": "Dương Thanh Phong",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD01042024P"
+ },
+ {
+  "user_id": "1381578532916120000",
+  "name": "Thái Hoàng Linh Đan",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD07032025"
+ },
+ {
+  "user_id": "7271484910144077856",
+  "name": "Cao Hoàng Vũ",
+  "dept": "Phòng Kho vận,OZOVN",
+  "emp_id": "XTRAD03042023"
+ },
+ {
+  "user_id": "7496310585399705632",
+  "name": "Nguyễn Thu Huyền",
+  "dept": "Bộ phận sale,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD23042025"
+ },
+ {
+  "user_id": "7500570798516600871",
+  "name": "Nguyễn Thu Hà",
+  "dept": "Bộ phận sale,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD06052025"
+ },
+ {
+  "user_id": "7502287163506049056",
+  "name": "Lê Hồng Huế",
+  "dept": "Bộ phận sale,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD12052025H"
+ },
+ {
+  "user_id": "7505963774981980199",
+  "name": "Phạm Thị Mỹ Hằng",
+  "dept": "Bộ phận sale,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD19052025B"
+ },
+ {
+  "user_id": "7665175571470520000",
+  "name": "Phạm Hoàng Huyền Trang",
+  "dept": "Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD27072026"
+ },
+ {
+  "user_id": "7496403698952749095",
+  "name": "Phượng Vũ",
+  "dept": "Bộ phận sale,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD05052025A"
+ },
+ {
+  "user_id": "7381646222924185631",
+  "name": "Linh Phạm",
+  "dept": "Phòng Ecom,OZOVN,Leader",
+  "emp_id": "XTRAD18062024"
+ },
+ {
+  "user_id": "7260696010970628128",
+  "name": "Trọng Sơn",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD02082022"
+ },
+ {
+  "user_id": "7291104517217583136",
+  "name": "Đào Danh Hồng Minh",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XE18102023MN"
+ },
+ {
+  "user_id": "7476668722678153247",
+  "name": "Lan Anh",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD13052024"
+ },
+ {
+  "user_id": "7443644200702181408",
+  "name": "Nhật Lệ",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD27052024L"
+ },
+ {
+  "user_id": "7503399670006186022",
+  "name": "Lại Thanh Mai",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD13052025"
+ },
+ {
+  "user_id": "7478530571950506022",
+  "name": "Trần Hồng Quyên Marketing",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD06032025Q"
+ },
+ {
+  "user_id": "7625460206780059358",
+  "name": "Lê Phương Nam",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD06042026N"
+ },
+ {
+  "user_id": "7625455321159929564",
+  "name": "Đặng Hoàng Anh",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD06042026A"
+ },
+ {
+  "user_id": "7631767566708412127",
+  "name": "Nguyễn Thị Xuyền",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD23042026"
+ },
+ {
+  "user_id": "7625459275325820639",
+  "name": "Nguyễn Duy Bình",
+  "dept": "Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD06042026B"
+ },
+ {
+  "user_id": "7483358037789425703",
+  "name": "Thanh Tùng",
+  "dept": "Bộ phận Digital,Phòng Marketing,OZOVN",
+  "emp_id": "XTRAD19032025B"
+ },
+ {
+  "user_id": "7488158083810623527",
+  "name": "Nguyễn Việt Dũng",
+  "dept": "Bộ phận Digital,OZOVN,Phòng Marketing",
+  "emp_id": "XTRAD01042025A"
+ },
+ {
+  "user_id": "7474816533512945696",
+  "name": "Lê Phú Dũng",
+  "dept": "Bộ phận Digital,OZOVN,Phòng Marketing",
+  "emp_id": "XTRAD17022025D"
+ },
+ {
+  "user_id": "7538760727964762143",
+  "name": "Tòng Thị Quỳnh",
+  "dept": "Phòng thiết kế,OZOVN,Phòng Truyền thông",
+  "emp_id": "XTRAD18082025"
+ },
+ {
+  "user_id": "7413939576995102751",
+  "name": "Lương Thúy Hiền",
+  "dept": "Phòng thiết kế,OZOVN,Phòng Truyền thông",
+  "emp_id": "XTRAD13092024"
+ },
+ {
+  "user_id": "7630649369796021984",
+  "name": "Lê Tấn Đức",
+  "dept": "Phòng thiết kế,OZOVN,Phòng Truyền thông",
+  "emp_id": "XTRAD20042026C"
+ },
+ {
+  "user_id": "7476658953955377183",
+  "name": "Hoàng Ánh Dương",
+  "dept": "Phòng Truyền thông,OZOVN",
+  "emp_id": "XTRAD20102023"
+ },
+ {
+  "user_id": "7630646524413857499",
+  "name": "Nguyễn Hương Thảo",
+  "dept": "Phòng Truyền thông,OZOVN",
+  "emp_id": "XTRAD20042026A"
+ },
+ {
+  "user_id": "7521883864579506214",
+  "name": "Trần Thị Huyền Trang",
+  "dept": "Phòng Mua hàng,OZOVN,Leader",
+  "emp_id": "OZO01072025"
+ },
+ {
+  "user_id": "7500138705902895143",
+  "name": "Lê Hương Giang",
+  "dept": "Phòng Mua hàng,OZOVN",
+  "emp_id": "XTRAD05052025G"
+ },
+ {
+  "user_id": "7508205074682757151",
+  "name": "Nguyễn Thị Trang Nhung ",
+  "dept": "Phòng Mua hàng,OZOVN",
+  "emp_id": "XTRAD27052025"
+ },
+ {
+  "user_id": "7518188439313874975",
+  "name": "Phạm Khánh Ly",
+  "dept": "Phòng RnD,OZOVN",
+  "emp_id": "XC23062025"
+ },
+ {
+  "user_id": "7522447696578281504",
+  "name": "Trần Thị Huệ",
+  "dept": "Phòng RnD,OZOVN",
+  "emp_id": "XC03072025"
+ },
+ {
+  "user_id": "7525268839555252255",
+  "name": "Vũ Thị Lan",
+  "dept": "Phòng RnD,OZOVN",
+  "emp_id": "XG11072025"
+ },
+ {
+  "user_id": "7625458346681700061",
+  "name": "Lê Thị Kim Tuyến ",
+  "dept": "Phòng RnD,OZOVN",
+  "emp_id": "XE06042026T"
+ },
+ {
+  "user_id": "7622863246642417376",
+  "name": "Phạm Thị Vân",
+  "dept": "Phòng Kế Toán,OZOVN",
+  "emp_id": "XTRAD30032026"
+ },
+ {
+  "user_id": "7619143148744216286",
+  "name": "Quỳnh Trangg",
+  "dept": "Phòng Kế Toán,OZOVN",
+  "emp_id": "XE20032026"
+ },
+ {
+  "user_id": "7612471032875585244",
+  "name": "Đỗ Thị Thu Hằng",
+  "dept": "Phòng Kế Toán,OZOVN",
+  "emp_id": "XTRAD02032026"
+ },
+ {
+  "user_id": "7629186841824284379",
+  "name": "Mai Thị Vân",
+  "dept": "Phòng Kế Toán,OZOVN",
+  "emp_id": "XE16042026"
+ },
+ {
+  "user_id": "7636960235952803552",
+  "name": "Trần Thanh Hương",
+  "dept": "Phòng HCNS,OZOVN",
+  "emp_id": "XTRAD07052026"
+ },
+ {
+  "user_id": "7639945395239079646",
+  "name": "Nguyễn Thị Lan Anh",
+  "dept": "Phòng Kế Toán,OZOVN",
+  "emp_id": "XTRAD15052026"
+ },
+ {
+  "user_id": "7628050066497883869",
+  "name": "Quang Duy",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD13042026"
+ },
+ {
+  "user_id": "7638450808698179291",
+  "name": "Trần Huệ Chi",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "CTV11052026"
+ },
+ {
+  "user_id": "7641042461099298523",
+  "name": "Lê Hoàng Vũ",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "CTV18052026V"
+ },
+ {
+  "user_id": "7651800727500639963",
+  "name": "Dương Thị Thu Hường",
+  "dept": "Bộ phận Digital,Phòng Marketing,OZOVN",
+  "emp_id": "CTV15062026"
+ },
+ {
+  "user_id": "7652174302998515419",
+  "name": "Trần Hà Phương",
+  "dept": "Phòng Truyền thông,OZOVN",
+  "emp_id": "CTV17062026"
+ },
+ {
+  "user_id": "7656622462557228770",
+  "name": "Phạm Đức Vinh",
+  "dept": "Bộ phận Digital,OZOVN",
+  "emp_id": "CTV29062026"
+ },
+ {
+  "user_id": "7654026594704527069",
+  "name": "Phạm Thị Mỹ Tâm",
+  "dept": "Phòng Marketing,OZOVN",
+  "emp_id": "CTV22062026"
+ },
+ {
+  "user_id": "7492985908707196959",
+  "name": "Nguyễn Thị Thu Hường",
+  "dept": "Phòng Ecom,OZOVN",
+  "emp_id": "XTRAD14042025"
+ },
+ {
+  "user_id": "7657364718503448288",
+  "name": "Trương Ái Bình",
+  "dept": "Phòng HCNS,Trợ Lý AI,OZOVN",
+  "emp_id": "CTV01072026"
+ },
+ {
+  "user_id": "7659594320919400166",
+  "name": "Hoàng Yến Linh",
+  "dept": "Phòng Truyền thông,OZOVN",
+  "emp_id": "CTV07072026YL"
+ },
+ {
+  "user_id": "7661823485517270757",
+  "name": "Đỗ Thị Nhung",
+  "dept": "Bộ phận Digital,OZOVN",
+  "emp_id": "CTV13072026"
+ },
+ {
+  "user_id": "7659227418514755294",
+  "name": "Trần Bảo Hoàng",
+  "dept": "Bộ phận Digital,OZOVN",
+  "emp_id": "CTV07072026BH"
+ },
+ {
+  "user_id": "7659594019286109926",
+  "name": "Phan Quyết Thắng",
+  "dept": "Phòng Truyền thông,OZOVN",
+  "emp_id": "XTRAD07072026"
+ },
+ {
+  "user_id": "7661842318370016997",
+  "name": "Nguyễn Thị Hiền",
+  "dept": "Phòng RnD,OZOVN",
+  "emp_id": "XC13072026"
+ },
+ {
+  "user_id": "7668133387479076584",
+  "name": "Vũ Việt Hưng",
+  "dept": "Phòng Kế toán,OZOVN",
+  "emp_id": "XTRAD30072026"
+ },
+ {
+  "user_id": "7673057323291545317",
+  "name": "Phạm Thị Huyền Trang",
+  "dept": "Phòng HCNS,OZOVN",
+  "emp_id": "XTRAD17082026"
+ },
+ {
+  "user_id": "7676310336319803109",
+  "name": "Nguyễn Bá Đạt",
+  "dept": "Phòng Marketing,Bộ phận sale,Bộ phận Digital,OZOVN",
+  "emp_id": "XTRAD21082026"
+ },
+ {
+  "user_id": "7677414040619978461",
+  "name": "Nguyễn Quỳnh Mai",
+  "dept": "Phòng HCNS,OZOVN",
+  "emp_id": "XTRAD24082026"
+ }
+]

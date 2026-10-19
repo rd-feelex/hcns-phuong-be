@@ -1,77 +1,85 @@
-const supabase = require('../config/supabase');
+const { query } = require('../config/db');
 
 // Lịch sử biến động lương/nhân sự
 async function changes({ search, limit = 500 }) {
-  let query = supabase
-    .from('salary_changes')
-    .select('*')
-    .order('effective_date', { ascending: false, nullsFirst: false })
-    .limit(limit);
-  if (search) query = query.or(`full_name.ilike.%${search}%,employee_code.ilike.%${search}%`);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data;
+  const params = [];
+  let whereSql = '';
+  if (search) {
+    params.push(`%${search}%`);
+    whereSql = 'WHERE full_name ILIKE $1 OR employee_code ILIKE $1';
+  }
+  params.push(Number(limit));
+  const { rows } = await query(
+    `SELECT * FROM salary_changes ${whereSql}
+     ORDER BY effective_date DESC NULLS LAST LIMIT $${params.length}`,
+    params
+  );
+  return rows;
 }
 
-// Chi tiết truy thu theo tháng
 async function arrears({ month }) {
-  let query = supabase.from('arrears_details').select('*').order('employee_code');
-  if (month) query = query.eq('month', month);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data;
+  const params = [];
+  let whereSql = '';
+  if (month) {
+    params.push(month);
+    whereSql = 'WHERE month = $1';
+  }
+  const { rows } = await query(
+    `SELECT * FROM arrears_details ${whereSql} ORDER BY employee_code`,
+    params
+  );
+  return rows;
 }
 
-// Thưởng Ebitda theo tháng
 async function ebitda({ month }) {
-  let query = supabase
-    .from('ebitda_bonuses')
-    .select('*')
-    .order('final_bonus', { ascending: false });
-  if (month) query = query.eq('month', month);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data;
+  const params = [];
+  let whereSql = '';
+  if (month) {
+    params.push(month);
+    whereSql = 'WHERE month = $1';
+  }
+  const { rows } = await query(
+    `SELECT * FROM ebitda_bonuses ${whereSql} ORDER BY final_bonus DESC`,
+    params
+  );
+  return rows;
 }
 
-// Thang bảng lương chuẩn
 async function grades() {
-  const { data, error } = await supabase
-    .from('salary_grades')
-    .select('*')
-    .order('grade', { ascending: false });
-  if (error) throw new Error(error.message);
-  return data;
+  const { rows } = await query('SELECT * FROM salary_grades ORDER BY grade DESC');
+  return rows;
 }
 
-// KPI chi tiết
 async function kpiDetails({ month, sheet }) {
-  let query = supabase.from('kpi_details').select('*').order('employee_code');
-  if (month) query = query.eq('month', month);
-  if (sheet) query = query.eq('sheet', sheet);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data;
+  const where = [];
+  const params = [];
+  if (month) { params.push(month); where.push(`month = $${params.length}`); }
+  if (sheet) { params.push(sheet); where.push(`sheet = $${params.length}`); }
+  const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const { rows } = await query(
+    `SELECT * FROM kpi_details ${whereSql} ORDER BY employee_code`,
+    params
+  );
+  return rows;
 }
 
-// Lương CTV theo tháng
 async function contractorSalaries({ month }) {
-  let query = supabase
-    .from('contractor_salaries')
-    .select('*, employees(full_name, position, department, employee_type, status)')
-    .order('employee_code');
-  if (month) query = query.eq('month', month);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data.map((r) => ({
-    ...r,
-    full_name: r.employees?.full_name,
-    position: r.employees?.position,
-    department: r.employees?.department,
-    employee_type: r.employees?.employee_type,
-    emp_status: r.employees?.status,
-    employees: undefined,
-  }));
+  const params = [];
+  let whereSql = '';
+  if (month) {
+    params.push(month);
+    whereSql = 'WHERE c.month = $1';
+  }
+  const { rows } = await query(
+    `SELECT c.*, e.full_name, e.position, e.department, e.employee_type,
+            e.status AS emp_status
+     FROM contractor_salaries c
+     LEFT JOIN employees e ON e.employee_code = c.employee_code
+     ${whereSql}
+     ORDER BY c.employee_code`,
+    params
+  );
+  return rows;
 }
 
 module.exports = { changes, arrears, ebitda, grades, kpiDetails, contractorSalaries };

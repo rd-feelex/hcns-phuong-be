@@ -1,15 +1,14 @@
-const supabase = require('../config/supabase');
+const { query } = require('../config/db');
 
 async function stats(month) {
-  const [{ data: employees, error: e1 }, { data: salaries, error: e2 }] =
-    await Promise.all([
-      supabase.from('employees').select('employee_code, company, department, status, employee_type'),
-      month
-        ? supabase.from('salary_records').select('*').eq('month', month)
-        : supabase.from('salary_records').select('*'),
-    ]);
-  if (e1) throw new Error(e1.message);
-  if (e2) throw new Error(e2.message);
+  const [empRes, salRes] = await Promise.all([
+    query('SELECT employee_code, company, department, status, employee_type FROM employees'),
+    month
+      ? query('SELECT * FROM salary_records WHERE month = $1', [month])
+      : query('SELECT * FROM salary_records'),
+  ]);
+  const employees = empRes.rows;
+  const salaries = salRes.rows;
 
   const sum = (field) =>
     salaries.reduce((acc, r) => acc + (Number(r[field]) || 0), 0);
@@ -25,22 +24,14 @@ async function stats(month) {
       .sort((a, b) => b.value - a.value);
   };
 
-  // Gắn phòng ban/công ty của nhân viên vào bản ghi lương
-  const empMap = Object.fromEntries(employees.map((e) => [e.employee_code, e]));
-  const salWithDept = salaries.map((s) => ({
-    ...s,
-    department: empMap[s.employee_code]?.department,
-  }));
-
-  // Nhân sự theo công ty đếm theo BẢNG LƯƠNG từng công ty (một người nhận lương
-  // ở nhiều công ty được đếm ở từng nơi — khớp với số dòng của từng sheet Excel).
   const empMap0 = Object.fromEntries(employees.map((e) => [e.employee_code, e]));
-  const pairs = new Map(); // "company|code" -> {company, code}
+
+  // Nhân sự theo công ty đếm theo BẢNG LƯƠNG từng công ty (khớp từng sheet Excel)
+  const pairs = new Map();
   for (const s of salaries) {
     const comp = s.company || empMap0[s.employee_code]?.company || 'Khác';
     pairs.set(`${comp}|${s.employee_code}`, { comp, code: s.employee_code });
   }
-  // Nhân viên chưa có bảng lương vẫn được đếm theo công ty chính
   for (const e of employees) {
     const comp = e.company || 'Khác';
     if (![...pairs.keys()].some((k) => k.endsWith(`|${e.employee_code}`))) {
@@ -48,7 +39,6 @@ async function stats(month) {
     }
   }
 
-  // Phòng ban nhóm theo từng công ty: [{ company, total, departments: [{name, value}] }]
   const byCompany = {};
   for (const { comp, code } of pairs.values()) {
     const dept = empMap0[code]?.department || 'Chưa phân phòng ban';
@@ -65,6 +55,11 @@ async function stats(month) {
         .sort((a, b) => b.value - a.value),
     }))
     .sort((a, b) => b.total - a.total);
+
+  const salWithDept = salaries.map((s) => ({
+    ...s,
+    department: empMap0[s.employee_code]?.department,
+  }));
 
   return {
     month,

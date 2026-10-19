@@ -1,4 +1,4 @@
-const supabase = require('../config/supabase');
+const { query } = require('../config/db');
 
 /**
  * Engine tính lương — công thức được đối chiếu từ bảng lương Excel 7/2026:
@@ -190,35 +190,28 @@ function computeRow({ employee, baseline, days, input, standardDefault }) {
 
 // Lấy bản ghi lương gần nhất (<= tháng tính) làm cơ cấu lương chuẩn của mỗi NV
 async function getBaselines(month) {
-  const { data, error } = await supabase
-    .from('salary_records')
-    .select('*')
-    .lte('month', month)
-    .order('month', { ascending: false });
-  if (error) throw new Error(error.message);
-  const map = {};
-  for (const row of data) {
-    if (!map[row.employee_code]) map[row.employee_code] = row;
-  }
-  return map;
+  const { rows } = await query(
+    `SELECT DISTINCT ON (employee_code) *
+     FROM salary_records WHERE month <= $1
+     ORDER BY employee_code, month DESC`,
+    [month]
+  );
+  return Object.fromEntries(rows.map((r) => [r.employee_code, r]));
 }
 
 async function preview(month, { standardWorkdays = 26 } = {}) {
   const [emps, baselines, att, inputs] = await Promise.all([
     // Chỉ tính lương nhân viên chính thức — CTV/TTS có bảng lương riêng
-    supabase.from('employees').select('*').eq('status', 'active').eq('employee_type', 'staff'),
+    query(`SELECT * FROM employees WHERE status = 'active' AND employee_type = 'staff'`),
     getBaselines(month),
-    supabase.from('attendance_records').select('*').eq('month', month),
-    supabase.from('payroll_inputs').select('*').eq('month', month),
+    query('SELECT * FROM attendance_records WHERE month = $1', [month]),
+    query('SELECT * FROM payroll_inputs WHERE month = $1', [month]),
   ]);
-  if (emps.error) throw new Error(emps.error.message);
-  if (att.error) throw new Error(att.error.message);
-  if (inputs.error) throw new Error(inputs.error.message);
 
-  const attMap = Object.fromEntries(att.data.map((a) => [a.employee_code, a.days]));
-  const inputMap = Object.fromEntries(inputs.data.map((i) => [i.employee_code, i]));
+  const attMap = Object.fromEntries(att.rows.map((a) => [a.employee_code, a.days]));
+  const inputMap = Object.fromEntries(inputs.rows.map((i) => [i.employee_code, i]));
 
-  return emps.data
+  return emps.rows
     .map((employee) =>
       computeRow({
         employee,
@@ -243,26 +236,30 @@ async function compute(month, options = {}) {
     throw err;
   }
 
-  const { error } = await supabase
-    .from('salary_records')
-    .upsert(toSave, { onConflict: 'employee_code,month,company' });
-  if (error) throw new Error(error.message);
+  const cols = Object.keys(toSave[0]);
+  const updates = cols
+    .filter((c) => !['employee_code', 'month', 'company'].includes(c))
+    .map((c) => `${c} = EXCLUDED.${c}`)
+    .join(', ');
+  for (const row of toSave) {
+    const placeholders = cols.map((_, i) => `$${i + 1}`).join(', ');
+    await query(
+      `INSERT INTO salary_records (${cols.join(', ')}) VALUES (${placeholders})
+       ON CONFLICT (employee_code, month, company) DO UPDATE SET ${updates}`,
+      cols.map((c) => row[c])
+    );
+  }
   return { saved: toSave.length, month };
 }
 
 async function getInputs(month) {
-  const { data, error } = await supabase
-    .from('payroll_inputs')
-    .select('*')
-    .eq('month', month);
-  if (error) throw new Error(error.message);
-  return data;
+  const { rows } = await query('SELECT * FROM payroll_inputs WHERE month = $1', [month]);
+  return rows;
 }
 
 async function saveInputs(month, items) {
   const rows = (items || []).map((i) => ({
     employee_code: i.employee_code,
-    month,
     kpi_percent: i.kpi_percent ?? 1,
     business_bonus: i.business_bonus ?? 0,
     incentive_bonus: i.incentive_bonus ?? 0,
@@ -272,10 +269,24 @@ async function saveInputs(month, items) {
     advance_paid: i.advance_paid ?? 0,
   }));
   if (!rows.length) return { saved: 0 };
-  const { error } = await supabase
-    .from('payroll_inputs')
-    .upsert(rows, { onConflict: 'employee_code,month' });
-  if (error) throw new Error(error.message);
+  for (const r of rows) {
+    await query(
+      `INSERT INTO payroll_inputs
+         (employee_code, month, kpi_percent, business_bonus, incentive_bonus,
+          other_deduction, arrears, arrears_note, advance_paid)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       ON CONFLICT (employee_code, month) DO UPDATE SET
+         kpi_percent = EXCLUDED.kpi_percent,
+         business_bonus = EXCLUDED.business_bonus,
+         incentive_bonus = EXCLUDED.incentive_bonus,
+         other_deduction = EXCLUDED.other_deduction,
+         arrears = EXCLUDED.arrears,
+         arrears_note = EXCLUDED.arrears_note,
+         advance_paid = EXCLUDED.advance_paid`,
+      [r.employee_code, month, r.kpi_percent, r.business_bonus, r.incentive_bonus,
+        r.other_deduction, r.arrears, r.arrears_note, r.advance_paid]
+    );
+  }
   return { saved: rows.length };
 }
 
