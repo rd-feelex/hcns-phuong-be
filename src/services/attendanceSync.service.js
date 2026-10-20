@@ -258,10 +258,14 @@ async function autoFillSaturdays(month) {
   if (!saturdays.length) return { filled: 0, saturdays: [] };
 
   // Tất cả nhân viên đang làm việc (gồm cả CTV — thứ 7 online cũng nửa công)
-  const emp = await query(`SELECT employee_code FROM employees WHERE status='active'`);
+  const emp = await query(`SELECT employee_code, join_date FROM employees WHERE status='active'`);
+  // chuẩn hoá join_date -> 'YYYY-MM-DD' để so sánh chuỗi
+  for (const e of emp.rows) e.jd = e.join_date ? String(e.join_date).slice(0, 10) : null;
   let filled = 0;
   for (const date of saturdays) {
     for (const e of emp.rows) {
+      // Bỏ qua nếu nhân viên chưa vào làm tính tới ngày thứ 7 này
+      if (e.jd && date < e.jd) continue;
       // Bỏ qua nếu ngày đó đã có bản ghi (nghỉ phép, đã chấm...) ở attendance_daily
       const existed = await query(
         'SELECT 1 FROM attendance_daily WHERE employee_code=$1 AND work_date=$2', [e.employee_code, date]);
