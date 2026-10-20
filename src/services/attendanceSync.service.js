@@ -22,18 +22,24 @@ const toMin = (d) => d.getHours() * 60 + d.getMinutes();
 const hhmm = (min) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}:00`;
 
 // Tính kết quả 1 ngày từ danh sách lượt chấm (mảng Date) + ngày (để biết thứ)
+// Khoảng cách tối thiểu (phút) giữa lượt vào và lượt ra để coi là 1 buổi làm thật.
+// Dưới mốc này coi như quẹt trùng (double-tap) chứ không phải giờ ra.
+const MIN_SESSION = 120;
+
 function computeDay(times, dateStr) {
   if (!times.length) return null;
-  const mins = times.map(toMin).sort((a, b) => a - b);
+  // Gộp các lượt quẹt TRÙNG PHÚT để tránh double-tap làm lệch
+  const mins = [...new Set(times.map(toMin))].sort((a, b) => a - b);
   const inMin = mins[0];
   const outMin = mins[mins.length - 1];
 
   // Chọn ca: thứ 7 = ca sáng; T2–T6 vào sáng = cả ngày, vào chiều = nửa ca chiều
-  const dow = dateStr ? new Date(`${dateStr}T00:00:00`).getDay() : (inMin < NOON_MIN ? 1 : 1);
+  const dow = dateStr ? new Date(`${dateStr}T00:00:00`).getDay() : 1;
   let shift;
   if (dow === 6) shift = inMin < NOON_MIN ? SAT : AFT;
   else shift = inMin < NOON_MIN ? FULL : AFT;
-  const hasOut = outMin >= shift.endMin && outMin !== inMin;
+  // Có giờ ra khi có >=2 lượt cách nhau đủ xa (lượt cuối = giờ ra, kể cả về sớm)
+  const hasOut = (outMin - inMin) >= MIN_SESSION;
   const late = inMin > shift.graceMin;
 
   let worked = null, diff = null, note = null;
@@ -41,14 +47,12 @@ function computeDay(times, dateStr) {
   if (hasOut) {
     worked = outMin - inMin;
     diff = worked - shift.standard;
-    if (late) {
-      const t = shift === AFT ? '13:30' : '08:30';
-      note = `Vào sau ${t} (${shift.label}) — cần phiếu muộn Lark`;
-    } else {
-      note = `Ca ${shift.label}`;
-    }
+    const parts = [];
+    if (late) parts.push(`vào muộn (sau ${shift === AFT ? '13:30' : '08:30'})`);
+    if (outMin < shift.endMin) parts.push(`về sớm lúc ${String(Math.floor(outMin / 60)).padStart(2, '0')}:${String(outMin % 60).padStart(2, '0')}`);
+    note = parts.length ? `Ca ${shift.label} — ${parts.join(', ')}` : `Ca ${shift.label}`;
   } else {
-    note = `Thiếu lượt chấm ra (${shift.label}) — kiểm tra lại`;
+    note = `Chỉ có 1 lượt quẹt (quên quẹt ra?) — kiểm tra lại`;
   }
 
   return {
