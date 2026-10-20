@@ -289,6 +289,60 @@ async function autoFillSaturdays(month) {
   return { filled, saturdays };
 }
 
+// Chuẩn hoá "8:0" / "08:00" / "08:00:00" -> "HH:MM:SS"
+function toHHMMSS(t) {
+  if (!t) return null;
+  const parts = String(t).trim().split(':').map((x) => x.padStart(2, '0'));
+  while (parts.length < 3) parts.push('00');
+  return parts.slice(0, 3).join(':');
+}
+
+/**
+ * Bù/sửa chấm công 1 ngày từ PHIẾU LARK đã duyệt (quên chấm công).
+ * fix = { date:'YYYY-MM-DD', check_in?:'HH:MM', check_out?:'HH:MM', status? }
+ * Gộp giờ bổ sung với lượt đã có rồi tính lại; đặt source='corrected' để các lần
+ * đồng bộ máy sau KHÔNG ghi đè.
+ */
+async function applyCorrection(employee_code, fix) {
+  if (!employee_code || !fix || !fix.date) return { ok: false, reason: 'thiếu dữ liệu' };
+  const date = fix.date;
+  const ci = toHHMMSS(fix.check_in);
+  const co = toHHMMSS(fix.check_out);
+
+  // Lấy lượt đã có trong ngày (nếu có) để gộp
+  const prev = await query(
+    `SELECT punches FROM attendance_daily WHERE employee_code=$1 AND work_date=$2`, [employee_code, date]);
+  const times = [];
+  if (prev.rowCount && Array.isArray(prev.rows[0].punches)) {
+    for (const p of prev.rows[0].punches) { const d = new Date(`${date}T${p}`); if (!Number.isNaN(d.getTime())) times.push(d); }
+  }
+  if (ci) times.push(new Date(`${date}T${ci}`));
+  if (co) times.push(new Date(`${date}T${co}`));
+  if (!times.length) return { ok: false, reason: 'không có giờ để bù' };
+
+  const res = computeDay(times, date);
+  const status = fix.status || res.status;
+  await query(
+    `INSERT INTO attendance_daily
+       (employee_code, work_date, check_in, check_out, worked_minutes, diff_minutes, late, status, source, note, punches, updated_at)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'corrected',$9,$10::jsonb, now())
+     ON CONFLICT (employee_code, work_date) DO UPDATE SET
+       check_in = EXCLUDED.check_in, check_out = EXCLUDED.check_out,
+       worked_minutes = EXCLUDED.worked_minutes, diff_minutes = EXCLUDED.diff_minutes,
+       late = EXCLUDED.late, status = EXCLUDED.status, source = 'corrected',
+       note = EXCLUDED.note, punches = EXCLUDED.punches, updated_at = now()`,
+    [employee_code, date, res.check_in, res.check_out, res.worked_minutes, res.diff_minutes,
+      res.late, status, 'Bổ sung từ phiếu Lark đã duyệt', JSON.stringify(res.punches)]
+  );
+  const month = date.slice(0, 7);
+  await query(
+    `INSERT INTO attendance_records (employee_code, month, days)
+     VALUES ($1,$2,$3::jsonb)
+     ON CONFLICT (employee_code, month) DO UPDATE SET days = attendance_records.days || $3::jsonb`,
+    [employee_code, month, JSON.stringify({ [date]: status })]);
+  return { ok: true, date, check_in: res.check_in, check_out: res.check_out, status };
+}
+
 // Danh sách ngày chi tiết (giờ vào/ra/thừa/thiếu) — theo tháng hoặc khoảng ngày
 async function daily({ month, from, to }) {
   let whereSql, params;
@@ -310,4 +364,4 @@ async function daily({ month, from, to }) {
   return rows;
 }
 
-module.exports = { sync, daily, computeDay };
+module.exports = { sync, daily, computeDay, applyCorrection };

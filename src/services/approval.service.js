@@ -1,5 +1,6 @@
 const { query } = require('../config/db');
 const leaveService = require('./leave.service');
+const attendanceSync = require('./attendanceSync.service');
 
 async function list({ status, limit = 300 }) {
   const params = [];
@@ -30,6 +31,15 @@ async function upsertFromWebhook(p) {
     throw err;
   }
   const status = String(p.status || 'PENDING').toUpperCase();
+
+  // Nếu phiếu chỉ gửi lark_user_id -> tự tra ra mã nhân viên
+  let employeeCode = p.employee_code || null;
+  if (!employeeCode && p.lark_user_id) {
+    const e = await query('SELECT employee_code FROM employees WHERE lark_user_id = $1 LIMIT 1', [p.lark_user_id]);
+    if (e.rowCount) employeeCode = e.rows[0].employee_code;
+  }
+  p = { ...p, employee_code: employeeCode };
+
   const { rows } = await query(
     `INSERT INTO approvals
        (source, external_id, type, title, requester, employee_code, status, detail, link_url, updated_at)
@@ -59,7 +69,22 @@ async function upsertFromWebhook(p) {
       p.leave_code || 'P'
     );
   }
-  return { approval, leaveApplied };
+
+  // Phiếu QUÊN/BỔ SUNG CHẤM CÔNG được duyệt -> tự bù giờ vào/ra.
+  // p.corrections = [{ date, check_in?, check_out?, status? }, ...]
+  // (hoặc gửi 1 phiếu: p.correction = { date, check_in, check_out })
+  let corrections = null;
+  if (status === 'APPROVED' && approval.employee_code) {
+    const fixes = Array.isArray(p.corrections) ? p.corrections
+      : (p.correction ? [p.correction] : []);
+    if (fixes.length) {
+      corrections = [];
+      for (const f of fixes) {
+        corrections.push(await attendanceSync.applyCorrection(approval.employee_code, f));
+      }
+    }
+  }
+  return { approval, leaveApplied, corrections };
 }
 
 module.exports = { list, upsertFromWebhook };
