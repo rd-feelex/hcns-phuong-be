@@ -303,6 +303,6 @@ async function sendFile(chatId, fileKey) {
 }
 
 module.exports = {
-  isConfigured, getToken, resolveUserIds, pushUserFlows, listAllUsers,
+  isConfigured, getToken, request, resolveUserIds, pushUserFlows, listAllUsers,
   uploadFile, sendText, sendFile, NOTIFY_CHAT,
 };

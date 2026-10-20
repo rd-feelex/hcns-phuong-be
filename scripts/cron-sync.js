@@ -4,6 +4,7 @@
  */
 require('dotenv').config();
 const sync = require('../src/services/attendanceSync.service');
+const approval = require('../src/services/approval.service');
 const { pool } = require('../src/config/db');
 
 (async () => {
@@ -13,8 +14,15 @@ const { pool } = require('../src/config/db');
     const r = await sync.sync({ fromMonth: month });
     console.log(now.toISOString(), 'OK', JSON.stringify(r));
   } catch (e) {
-    console.error(now.toISOString(), 'ERR', e.message);
+    console.error(now.toISOString(), 'ERR sync', e.message);
     process.exitCode = 1;
+  }
+  // Kéo phiếu Lark (quên chấm công + nghỉ phép) đã duyệt -> tự áp vào chấm công
+  try {
+    const a = await approval.syncApprovals({ days: 40 });
+    console.log(now.toISOString(), 'APPROVALS', JSON.stringify(a));
+  } catch (e) {
+    console.error(now.toISOString(), 'ERR approvals', e.message);
   } finally {
     await pool.end();
   }
