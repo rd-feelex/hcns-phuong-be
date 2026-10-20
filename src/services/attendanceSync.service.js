@@ -112,8 +112,9 @@ async function sync({ fromMonth, full = false } = {}) {
     return { newLogs: 0, days: 0, saturday };
   }
 
-  // Map enrollid -> employee_code
-  const emp = await query('SELECT employee_code, enroll_id FROM employees WHERE enroll_id IS NOT NULL');
+  // Map enrollid -> employee_code (chỉ nhân viên ĐANG làm việc — người đã nghỉ
+  // không cần chấm công nữa, lượt quẹt của họ sẽ bị bỏ qua)
+  const emp = await query(`SELECT employee_code, enroll_id FROM employees WHERE enroll_id IS NOT NULL AND status = 'active'`);
   const byEnroll = Object.fromEntries(emp.rows.map((e) => [String(e.enroll_id), e.employee_code]));
 
   const groups = groupLogs(logs);
@@ -211,7 +212,7 @@ async function pushToLark() {
      FROM attendance_daily d
      JOIN employees e ON e.employee_code = d.employee_code
      WHERE d.lark_pushed = false AND e.lark_user_id IS NOT NULL
-       AND d.source = 'device'
+       AND d.source = 'device' AND e.status = 'active'
        ${PUSH_FROM ? 'AND d.work_date >= $1' : ''}
      ORDER BY d.work_date`,
     PUSH_FROM ? [PUSH_FROM] : []
@@ -298,7 +299,7 @@ async function daily({ month, from, to }) {
     `SELECT d.*, e.full_name, e.department
      FROM attendance_daily d
      JOIN employees e ON e.employee_code = d.employee_code
-     WHERE ${whereSql}
+     WHERE ${whereSql} AND e.status = 'active'
      ORDER BY d.work_date DESC, e.employee_code`,
     params
   );
