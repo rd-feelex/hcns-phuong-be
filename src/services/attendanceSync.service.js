@@ -188,15 +188,9 @@ async function sync({ fromMonth, full = false } = {}) {
     saturdayFill = { error: e.message };
   }
 
-  // Đẩy giờ chấm lên Lark Attendance (hướng B) — chỉ khi đã cấu hình app Lark
-  let larkResult = null;
-  if (lark.isConfigured()) {
-    try {
-      larkResult = await pushToLark();
-    } catch (e) {
-      larkResult = { error: e.message };
-    }
-  }
+  // KHÔNG đẩy Lark ở đây nữa: việc đẩy chuyển sang cron 20h (push-all-lark.js) để
+  // chỉ đẩy khi ngày đã đủ cả giờ vào/ra, tránh đẩy sớm khi mới có giờ vào.
+  let larkResult = { note: 'đẩy Lark chạy riêng lúc 20h' };
 
   return { newLogs: logs.length, days: daysWritten, unmatched: [...unmatched], saturday: saturdayFill, lark: larkResult };
 }
