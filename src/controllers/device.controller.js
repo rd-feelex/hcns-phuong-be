@@ -19,13 +19,14 @@ const saveMatches = asyncHandler(async (req, res) => {
 
 const runSync = asyncHandler(async (req, res) => {
   const fromMonth = req.body.fromMonth || req.query.fromMonth;
-  res.json(await sync.sync({ fromMonth }));
+  const full = req.body.full === true || req.query.full === '1';
+  res.json(await sync.sync({ fromMonth, full }));
 });
 
 const daily = asyncHandler(async (req, res) => {
-  const month = req.query.month;
-  if (!month) return res.status(400).json({ error: 'Thiếu month' });
-  res.json(await sync.daily(month));
+  const { month, from, to } = req.query;
+  if (!month && !(from && to)) return res.status(400).json({ error: 'Thiếu month hoặc from/to' });
+  res.json(await sync.daily({ month, from, to }));
 });
 
 const larkStatus = asyncHandler(async (req, res) => {

@@ -78,7 +78,7 @@ function groupLogs(logs) {
 }
 
 // Đồng bộ: kéo log mới từ máy, tính công, ghi vào attendance_daily + attendance_records(days)
-async function sync({ fromMonth } = {}) {
+async function sync({ fromMonth, full = false } = {}) {
   const sn = (await device.ping()).sn || 'ZK';
 
   // Làm mới map từ bảng Bitable công ty (người mới đăng ký máy + thêm vào bảng
@@ -90,8 +90,10 @@ async function sync({ fromMonth } = {}) {
   const state = await query('SELECT * FROM device_sync_state WHERE device_sn = $1', [sn]);
   const last = state.rows[0]?.last_log_time ? new Date(state.rows[0].last_log_time) : null;
 
-  // Mốc: lần đầu lấy từ đầu tháng chỉ định; lần sau lấy từ last_log_time
-  let since = last;
+  // Mốc: lần đầu lấy từ đầu tháng chỉ định; lần sau lấy từ last_log_time.
+  // full=true: bỏ qua last_log_time, kéo lại TOÀN BỘ từ đầu tháng để tính lại
+  // (dùng khi cần phục hồi dữ liệu — một lần kéo đủ lượt cả ngày nên không lệch).
+  let since = full ? null : last;
   if (!since && fromMonth) since = new Date(`${fromMonth}-01T00:00:00`);
 
   const curMonth = fromMonth || `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
@@ -117,7 +119,23 @@ async function sync({ fromMonth } = {}) {
   for (const g of groups) {
     const code = byEnroll[String(g.enrollid)];
     if (!code) { unmatched.add(g.enrollid); continue; }
-    const res = computeDay(g.times, g.date);
+
+    // GỘP với các lượt chấm đã lưu trước đó của cùng ngày. Đồng bộ tăng dần chỉ
+    // lấy log MỚI (vd lượt ra buổi chiều); nếu tính lại chỉ từ lượt mới sẽ hiểu
+    // nhầm 17h là "giờ vào" và ghi đè mất lượt vào buổi sáng. Gộp để đủ cả ngày.
+    let allTimes = g.times;
+    const prev = await query(
+      `SELECT punches, source FROM attendance_daily WHERE employee_code=$1 AND work_date=$2`,
+      [code, g.date]);
+    if (prev.rowCount && prev.rows[0].source === 'device' && Array.isArray(prev.rows[0].punches)) {
+      const seen = new Set(allTimes.map((d) => d.toTimeString().slice(0, 8)));
+      for (const p of prev.rows[0].punches) {
+        if (seen.has(p)) continue;
+        const dt = new Date(`${g.date}T${p}`);
+        if (!Number.isNaN(dt.getTime())) { allTimes = allTimes.concat(dt); seen.add(p); }
+      }
+    }
+    const res = computeDay(allTimes, g.date);
     if (!res) continue;
 
     await query(
@@ -262,15 +280,23 @@ async function autoFillSaturdays(month) {
   return { filled, saturdays };
 }
 
-// Danh sách ngày chi tiết (giờ vào/ra/thừa/thiếu) cho 1 tháng
-async function daily(month) {
+// Danh sách ngày chi tiết (giờ vào/ra/thừa/thiếu) — theo tháng hoặc khoảng ngày
+async function daily({ month, from, to }) {
+  let whereSql, params;
+  if (from && to) {
+    whereSql = 'd.work_date BETWEEN $1 AND $2';
+    params = [from, to];
+  } else {
+    whereSql = `to_char(d.work_date, 'YYYY-MM') = $1`;
+    params = [month];
+  }
   const { rows } = await query(
     `SELECT d.*, e.full_name, e.department
      FROM attendance_daily d
      JOIN employees e ON e.employee_code = d.employee_code
-     WHERE to_char(d.work_date, 'YYYY-MM') = $1
+     WHERE ${whereSql}
      ORDER BY d.work_date DESC, e.employee_code`,
-    [month]
+    params
   );
   return rows;
 }
