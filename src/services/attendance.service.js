@@ -2,16 +2,16 @@ const { query } = require('../config/db');
 
 async function list({ month }) {
   const params = [];
-  let whereSql = '';
+  const where = [`e.status = 'active'`]; // người đã nghỉ không hiện ở tổng hợp công
   if (month) {
     params.push(month);
-    whereSql = 'WHERE a.month = $1';
+    where.push(`a.month = $1`);
   }
   const { rows } = await query(
     `SELECT a.*, e.full_name, e.position, e.department, e.company
      FROM attendance_summary a
-     LEFT JOIN employees e ON e.employee_code = a.employee_code
-     ${whereSql}
+     JOIN employees e ON e.employee_code = a.employee_code
+     WHERE ${where.join(' AND ')}
      ORDER BY a.employee_code`,
     params
   );
