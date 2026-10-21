@@ -18,8 +18,8 @@ const settings = require('./settings.service');
 //         trong [out_std, out_ot_cap] (vd 17:00–17:30), tối đa = out_ot_cap − out_std.
 const DEFAULT_CONFIG = {
   in_grace: '08:30',       // ca cả ngày: mốc tính muộn/thiếu buổi sáng
-  aft_start: '13:00',      // giờ bắt đầu ca chiều — về TRƯỚC mốc này = nửa ca sáng
-  aft_in_grace: '13:30',   // nửa ca chiều: mốc muộn
+  half_day_cutoff: '14:00',// vào sáng, VỀ TRƯỚC mốc này = nửa ca sáng; về sau = cả ngày
+  aft_in_grace: '13:30',   // nửa ca chiều: mốc muộn (chấm vào 13:00–13:30 linh hoạt)
   morning_end: '12:00',    // giờ ra chuẩn của nửa ca sáng
   out_std: '17:00',        // giờ ra chuẩn (cả ngày & nửa chiều)
   out_ot_cap: '17:30',     // thừa tính tối đa tới đây
@@ -41,7 +41,7 @@ function shiftsFromConfig(cfg) {
     MORN: { graceMin: hm2min(C.in_grace), endMin: hm2min(C.morning_end), otCap: hm2min(C.sat_out_ot_cap), status: 'X/2', label: 'nửa ca sáng' },
     AFT: { graceMin: hm2min(C.aft_in_grace), endMin: hm2min(C.out_std), otCap: hm2min(C.out_ot_cap), status: 'X/2', label: 'nửa ca chiều' },
     SAT: { graceMin: hm2min(C.sat_in_grace), endMin: hm2min(C.sat_out_std), otCap: hm2min(C.sat_out_ot_cap), status: 'X/2', label: 'sáng thứ 7' },
-    aftStart: hm2min(C.aft_start),
+    halfCutoff: hm2min(C.half_day_cutoff),
     minSession: Number(C.min_session) || 120,
   };
 }
@@ -58,17 +58,17 @@ function computeDay(times, dateStr, cfg) {
   // Có giờ ra khi có >=2 lượt cách nhau đủ xa (lượt cuối = giờ ra, kể cả về sớm)
   const hasOut = (outMin - inMin) >= S.minSession;
 
-  // Chọn ca theo giờ VÀO + giờ RA (mốc ca chiều = aft_start, mặc định 13h):
-  //  - Vào buổi chiều (>= trưa)        → nửa ca chiều X/2 (về muộn vẫn X/2)
-  //  - Vào sáng, về TRƯỚC 13h          → nửa ca sáng   X/2
-  //  - Vào sáng, về TỪ 13h trở đi      → cả ngày X (về trước 17h thì X kèm thiếu giờ)
-  //  - Thứ 7 vào sáng                  → ca sáng thứ 7 X/2
-  //  Vd: 8h→12h30 = X/2 sáng · 8h→14h/15h = X + thiếu · 8h→17h = X · 13h30→17h30 = X/2 chiều.
+  // Chọn ca theo giờ VÀO + giờ RA (mốc nửa/cả-ngày = half_day_cutoff, mặc định 14h):
+  //  - Vào buổi chiều (>= trưa)             → nửa ca chiều X/2 (về muộn vẫn X/2)
+  //  - Vào sáng, về TRƯỚC 14h               → nửa ca sáng   X/2
+  //  - Vào sáng, về TỪ 14h trở đi           → cả ngày X (về trước 17h thì X kèm thiếu giờ)
+  //  - Thứ 7 vào sáng                       → ca sáng thứ 7 X/2
+  //  Vd: 8h→12h30 = X/2 sáng · 8h→13h30 = X/2 sáng · 8h→14h/15h = X + thiếu · 8h→17h = X · 13h30→17h30 = X/2 chiều.
   const dow = dateStr ? new Date(`${dateStr}T00:00:00`).getDay() : 1;
   let shift;
   if (inMin >= NOON_MIN) shift = S.AFT;
   else if (dow === 6) shift = S.SAT;
-  else if (hasOut && outMin < S.aftStart) shift = S.MORN;
+  else if (hasOut && outMin < S.halfCutoff) shift = S.MORN;
   else shift = S.FULL;
   const late = inMin > shift.graceMin;
 

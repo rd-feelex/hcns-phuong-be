@@ -5,7 +5,7 @@ const ATT_KEY = 'attendance_time';
 // Mặc định (khớp DEFAULT_CONFIG trong attendanceSync.service)
 const ATT_DEFAULT = {
   in_grace: '08:30',
-  aft_start: '13:00',
+  half_day_cutoff: '14:00',
   aft_in_grace: '13:30',
   morning_end: '12:00',
   out_std: '17:00',
