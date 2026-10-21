@@ -34,10 +34,17 @@ function standardWorkdays(year, month) {
   return total;
 }
 
-async function build(month, { deadline } = {}) {
+async function build(month, { deadline, codes } = {}) {
   const [y, m] = month.split('-').map(Number);
   const daysInMonth = new Date(y, m, 0).getDate();
   const stdDays = standardWorkdays(y, m);
+
+  const params = [month];
+  let codeFilter = '';
+  if (Array.isArray(codes) && codes.length) {
+    params.push(codes);
+    codeFilter = `AND e.employee_code = ANY($${params.length})`;
+  }
 
   // Nhân viên có UserID Lark + bảng chấm công tháng + giờ thiếu
   const emps = (await query(
@@ -50,9 +57,9 @@ async function build(month, { deadline } = {}) {
      FROM employees e
      LEFT JOIN attendance_records a
        ON a.employee_code = e.employee_code AND a.month = $1
-     WHERE e.status = 'active' AND e.lark_uid IS NOT NULL
+     WHERE e.status = 'active' AND e.lark_uid IS NOT NULL ${codeFilter}
      ORDER BY e.employee_code`,
-    [month]
+    params
   )).rows;
 
   const wb = new ExcelJS.Workbook();
