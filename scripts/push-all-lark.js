@@ -16,11 +16,15 @@ function curMonth() {
   const month = process.argv[2] || curMonth();
   if (!lark.isConfigured()) { console.log('Lark chưa cấu hình'); await pool.end(); return; }
 
+  // Chỉ đẩy ngày đã "chốt": đủ giờ ra, HOẶC là ngày quá khứ (giờ ra sẽ không có nữa).
+  // Ngày HÔM NAY mà chưa có giờ ra -> chưa đẩy, để tối (19h30) khi đã về mới đẩy,
+  // tránh đẩy sớm chỉ có giờ vào rồi bị đánh dấu "đã đẩy".
   const { rows } = await query(
     `SELECT d.id, d.work_date, d.check_in, d.check_out, e.lark_user_id
      FROM attendance_daily d JOIN employees e ON e.employee_code = d.employee_code
      WHERE d.lark_pushed = false AND e.status = 'active' AND e.lark_user_id IS NOT NULL
        AND d.check_in IS NOT NULL AND to_char(d.work_date,'YYYY-MM') = $1
+       AND (d.check_out IS NOT NULL OR d.work_date < CURRENT_DATE)
      ORDER BY d.work_date`, [month]);
 
   if (!rows.length) { console.log(new Date().toISOString(), 'Không có lượt mới để đẩy'); await pool.end(); return; }
