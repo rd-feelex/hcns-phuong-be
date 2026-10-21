@@ -12,14 +12,17 @@ const lark = require('./lark.service');
 const settings = require('./settings.service');
 
 // Cấu hình thời gian chấm công MẶC ĐỊNH (HCNS chỉnh được ở trang Cài đặt).
-// Quy tắc thừa/thiếu:
-//  - Vào: sau "in_grace" (vd 08:30) → tính thiếu = (giờ vào − in_grace). Đến sớm không cộng.
-//  - Ra : chuẩn "out_std" (vd 17:00). Về trước out_std → thiếu. Thừa chỉ tính
-//         trong [out_std, out_ot_cap] (vd 17:00–17:30), tối đa = out_ot_cap − out_std.
+// Quy tắc thừa/thiếu tính theo ĐỦ THỜI LƯỢNG:
+//  - Công chuẩn = giờ ra chuẩn − giờ bắt đầu (vd cả ngày 08:00→17:00 = 9h = 540').
+//  - thừa/thiếu = (thời gian làm thực) − công chuẩn. Vd vào 08:34 thì đủ khi ở tới 17:34.
+//  - Đến sớm hơn "giờ bắt đầu" KHÔNG được cộng (kẹp về giờ bắt đầu).
+//  - Thừa chặn tối đa = out_ot_cap − out_std (vd 30 phút).
 const DEFAULT_CONFIG = {
-  in_grace: '08:30',       // ca cả ngày: mốc tính muộn/thiếu buổi sáng
+  in_earliest: '08:00',    // giờ bắt đầu ca sáng/cả ngày (đến sớm hơn không cộng)
+  in_grace: '08:30',       // cờ "Muộn" nếu vào sau mốc này
   half_day_cutoff: '14:00',// vào sáng, VỀ TRƯỚC mốc này = nửa ca sáng; về sau = cả ngày
-  aft_in_grace: '13:30',   // nửa ca chiều: mốc muộn (chấm vào 13:00–13:30 linh hoạt)
+  aft_start: '13:00',      // giờ bắt đầu ca chiều
+  aft_in_grace: '13:30',   // cờ muộn ca chiều (chấm vào 13:00–13:30 linh hoạt)
   morning_end: '12:00',    // giờ ra chuẩn của nửa ca sáng
   out_std: '17:00',        // giờ ra chuẩn (cả ngày & nửa chiều)
   out_ot_cap: '17:30',     // thừa tính tối đa tới đây
@@ -36,11 +39,14 @@ const hm = (min) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(m
 
 function shiftsFromConfig(cfg) {
   const C = { ...DEFAULT_CONFIG, ...(cfg || {}) };
+  const mk = (startMin, endMin, otCap, graceMin, status, label) =>
+    ({ startMin, endMin, otCap, graceMin, status, label, standard: endMin - startMin });
+  const earliest = hm2min(C.in_earliest);
   return {
-    FULL: { graceMin: hm2min(C.in_grace), endMin: hm2min(C.out_std), otCap: hm2min(C.out_ot_cap), status: 'X', label: 'cả ngày' },
-    MORN: { graceMin: hm2min(C.in_grace), endMin: hm2min(C.morning_end), otCap: hm2min(C.sat_out_ot_cap), status: 'X/2', label: 'nửa ca sáng' },
-    AFT: { graceMin: hm2min(C.aft_in_grace), endMin: hm2min(C.out_std), otCap: hm2min(C.out_ot_cap), status: 'X/2', label: 'nửa ca chiều' },
-    SAT: { graceMin: hm2min(C.sat_in_grace), endMin: hm2min(C.sat_out_std), otCap: hm2min(C.sat_out_ot_cap), status: 'X/2', label: 'sáng thứ 7' },
+    FULL: mk(earliest, hm2min(C.out_std), hm2min(C.out_ot_cap), hm2min(C.in_grace), 'X', 'cả ngày'),
+    MORN: mk(earliest, hm2min(C.morning_end), hm2min(C.sat_out_ot_cap), hm2min(C.in_grace), 'X/2', 'nửa ca sáng'),
+    AFT: mk(hm2min(C.aft_start), hm2min(C.out_std), hm2min(C.out_ot_cap), hm2min(C.aft_in_grace), 'X/2', 'nửa ca chiều'),
+    SAT: mk(earliest, hm2min(C.sat_out_std), hm2min(C.sat_out_ot_cap), hm2min(C.sat_in_grace), 'X/2', 'sáng thứ 7'),
     halfCutoff: hm2min(C.half_day_cutoff),
     minSession: Number(C.min_session) || 120,
   };
@@ -77,18 +83,17 @@ function computeDay(times, dateStr, cfg) {
   // có đủ 2 lượt hoặc phiếu quên chấm công được duyệt bổ sung.
   let status = hasOut ? shift.status : 'T';
   if (hasOut) {
-    worked = outMin - inMin;
-    const morningDeficit = Math.max(0, inMin - shift.graceMin);       // vào sau mốc → thiếu
-    let overtime = 0, eveningDeficit = 0;
-    if (outMin >= shift.endMin) overtime = Math.min(outMin, shift.otCap) - shift.endMin; // thừa [std, cap]
-    else eveningDeficit = shift.endMin - outMin;                      // về trước giờ ra chuẩn → thiếu
-    diff = overtime - morningDeficit - eveningDeficit;
-    const parts = [];
-    if (morningDeficit > 0) parts.push(`vào muộn sau ${hm(shift.graceMin)}`);
-    if (eveningDeficit > 0) parts.push(`về sớm trước ${hm(shift.endMin)}`);
+    worked = outMin - inMin;                            // thời gian có mặt thực tế (để hiển thị)
+    // Tính công theo THỜI LƯỢNG: đến sớm hơn giờ bắt đầu không được cộng.
+    const effIn = Math.max(inMin, shift.startMin);
+    const effWorked = Math.max(0, outMin - effIn);
+    const otCapMin = Math.max(0, shift.otCap - shift.endMin);  // thừa tối đa (vd 30')
+    const rawDiff = effWorked - shift.standard;         // dư/thiếu so với công chuẩn
+    diff = rawDiff > 0 ? Math.min(rawDiff, otCapMin) : rawDiff;
     if (diff > 0) note = `Ca ${shift.label} — thừa ${diff} phút`;
-    else if (diff < 0) note = `Ca ${shift.label} — thiếu ${-diff} phút${parts.length ? ' (' + parts.join(', ') + ')' : ''}`;
+    else if (diff < 0) note = `Ca ${shift.label} — thiếu ${-diff} phút`;
     else note = `Ca ${shift.label} — đủ công`;
+    if (late) note += ' · vào muộn';
   } else {
     note = `Thiếu lượt chấm (${inMin < NOON_MIN ? 'quên quẹt RA' : 'quên quẹt VÀO'}) — cần phiếu quên chấm công`;
   }
