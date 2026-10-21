@@ -125,11 +125,13 @@ async function sync({ fromMonth, full = false } = {}) {
     const code = byEnroll[String(g.enrollid)];
     if (!code) { unmatched.add(g.enrollid); continue; }
 
-    // GỘP với các lượt chấm đã lưu trước đó của cùng ngày. Đồng bộ tăng dần chỉ
+    // GỘP với các lượt chấm đã lưu trước đó của cùng ngày. Đồng bộ TĂNG DẦN chỉ
     // lấy log MỚI (vd lượt ra buổi chiều); nếu tính lại chỉ từ lượt mới sẽ hiểu
     // nhầm 17h là "giờ vào" và ghi đè mất lượt vào buổi sáng. Gộp để đủ cả ngày.
+    // KHI full=true: đã kéo đủ lượt cả ngày từ máy nên KHÔNG gộp (gộp sẽ giữ lại
+    // lượt rác cũ, vd punch của người khác do từng gán nhầm badge).
     let allTimes = g.times;
-    const prev = await query(
+    const prev = full ? { rowCount: 0 } : await query(
       `SELECT punches, source FROM attendance_daily WHERE employee_code=$1 AND work_date=$2`,
       [code, g.date]);
     if (prev.rowCount && prev.rows[0].source === 'device' && Array.isArray(prev.rows[0].punches)) {
