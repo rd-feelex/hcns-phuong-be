@@ -62,4 +62,12 @@ const payrollReport = asyncHandler(async (req, res) => {
   res.send(Buffer.from(buffer));
 });
 
-module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport, payrollReport };
+// Import file chấm công tháng (mẫu Up Lark) — map theo Employee ID
+const importTimesheet = asyncHandler(async (req, res) => {
+  const month = req.body.month || req.query.month;
+  if (!req.file) return res.status(400).json({ error: 'Chưa chọn file' });
+  if (!month) return res.status(400).json({ error: 'Thiếu tháng' });
+  res.json(await timesheet.importTimesheet(month, req.file.buffer));
+});
+
+module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport, payrollReport, importTimesheet };

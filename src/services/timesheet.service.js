@@ -154,44 +154,70 @@ async function buildPayroll(month) {
        AND d.source IN ('device','corrected')
      ORDER BY d.employee_code, d.work_date`, [month])).rows;
 
+  // Tổng giờ thiếu mỗi NV (để cột "Công đi muộn") từ attendance_daily
+  const deficitByCode = {};
+  for (const e of emps) deficitByCode[e.employee_code] = 0;
+  const defRows = (await query(
+    `SELECT employee_code, COALESCE(-sum(diff_minutes),0) def FROM attendance_daily
+     WHERE to_char(work_date,'YYYY-MM')=$1 AND diff_minutes < 0 GROUP BY 1`, [month])).rows;
+  for (const r of defRows) deficitByCode[r.employee_code] = Number(r.def) || 0;
+
   const wb = new ExcelJS.Workbook();
 
-  // ---- Sheet 1: Chấm công (lưới X/X2) ----
+  // ===== Sheet 1: Chấm công (khớp mẫu BM_Chấm công) =====
   const s1 = wb.addWorksheet('Chấm công');
-  const infoHead = ['Số TT', 'Mã NV', 'Họ tên', 'Chức danh', 'Phòng ban', 'Công ty',
-    'Ngày vào cty', 'Ngày KT thử việc', 'Ngày bắt đầu HĐLĐ', 'Phân loại HĐ'];
-  const nInfo = infoHead.length;
-  const r1 = s1.getRow(1), r2 = s1.getRow(2);
-  infoHead.forEach((h, i) => { r1.getCell(i + 1).value = h; s1.mergeCells(1, i + 1, 2, i + 1); });
+  const infoHead = ['Số TT', 'MÃ NV', 'Họ tên', 'Chức danh', 'Phòng ban',
+    'Ngày vào cty', 'Ngày kết thúc thử việc', 'Ngày bắt đầu HĐLĐ', 'Phân loại hợp đồng'];
+  const nInfo = infoHead.length;                    // 9
+  const sumHead = ['Công thử việc', 'Công chính thức', 'Ngày phép', 'Ngày lễ thử việc',
+    'Ngày lễ chính thức', 'Tổng công thử việc', 'Tổng công chính thức', 'Công đi muộn', 'Công tính lương'];
+  const dayStart = nInfo + 1;                        // cột 10
+  const sumStart = nInfo + daysInMonth + 1;          // sau các cột ngày
+  const H1 = s1.getRow(1), H2 = s1.getRow(2);        // 2 dòng tiêu đề: ngày + thứ
+  // Thông tin NV: gộp 2 dòng
+  infoHead.forEach((h, i) => { H1.getCell(i + 1).value = h; s1.mergeCells(1, i + 1, 2, i + 1); });
+  // Ngày: dòng 1 = dd/mm, dòng 2 = thứ
   for (let d = 1; d <= daysInMonth; d++) {
-    const dow = new Date(y, m - 1, d).getDay();
-    r1.getCell(nInfo + d).value = DOW_VN[dow];
-    r2.getCell(nInfo + d).value = d;
+    const dt = new Date(y, m - 1, d);
+    H1.getCell(nInfo + d).value = `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+    H2.getCell(nInfo + d).value = DOW_VN[dt.getDay()];
   }
-  const totalColStart = nInfo + daysInMonth + 1;
-  ['Tổng công', 'Nghỉ phép'].forEach((h, i) => { r1.getCell(totalColStart + i).value = h; s1.mergeCells(1, totalColStart + i, 2, totalColStart + i); });
-  r1.font = { bold: true }; r2.font = { bold: true };
+  // Cột tổng: gộp 2 dòng
+  sumHead.forEach((h, i) => { H1.getCell(sumStart + i).value = h; s1.mergeCells(1, sumStart + i, 2, sumStart + i); });
+  H1.font = { bold: true }; H2.font = { bold: true };
+  H1.alignment = H2.alignment = { horizontal: 'center', vertical: 'middle' };
 
   let stt = 0;
   for (const e of emps) {
     const days = e.days || {};
-    const row = [++stt, e.employee_code, e.full_name, e.position || '', e.department || '', e.company || '',
+    const probEnd = e.probation_end_date ? String(e.probation_end_date).slice(0, 10) : null;
+    const row = [++stt, e.employee_code, e.full_name, e.position || '', e.department || '',
       fmtD(e.join_date), fmtD(e.probation_end_date), fmtD(e.contract_start_date), e.contract_type || ''];
-    let work = 0, leave = 0;
+    let congTV = 0, congCT = 0, ngayPhep = 0, leTV = 0, leCT = 0;
     for (let d = 1; d <= daysInMonth; d++) {
-      const v = days[`${month}-${String(d).padStart(2, '0')}`] || '';
+      const date = `${month}-${String(d).padStart(2, '0')}`;
+      const v = days[date] || '';
       row.push(v);
-      work += workCreditOf(v);
       const t = String(v).toUpperCase();
-      if (t === 'P') leave += 1; else if (t === 'P/2') leave += 0.5;
+      const isProb = probEnd && date <= probEnd;     // ngày thuộc thời gian thử việc
+      if (t === 'L') { if (isProb) leTV += 1; else leCT += 1; }
+      else if (t === 'P') ngayPhep += 1;
+      else if (t === 'P/2') ngayPhep += 0.5;
+      else { const c = workCreditOf(v); if (isProb) congTV += c; else congCT += c; }
     }
-    row.push(Math.round(work * 100) / 100, Math.round(leave * 100) / 100);
+    const r2 = (x) => Math.round(x * 100) / 100;
+    const tongTV = congTV + leTV;
+    const tongCT = congCT + leCT;
+    const congDiMuon = r2(deficitByCode[e.employee_code] / 510);     // giờ thiếu → quy ra ngày (1 ngày=8.5h)
+    const congTinhLuong = r2(tongTV * 0.85 + tongCT + ngayPhep - congDiMuon); // thử việc hưởng 85%
+    row.push(r2(congTV), r2(congCT), r2(ngayPhep), r2(leTV), r2(leCT), r2(tongTV), r2(tongCT), congDiMuon, congTinhLuong);
     s1.addRow(row);
   }
   s1.getColumn(1).width = 6; s1.getColumn(2).width = 18; s1.getColumn(3).width = 22;
-  s1.getColumn(4).width = 18; s1.getColumn(5).width = 16; s1.getColumn(6).width = 12;
-  for (let i = 7; i <= 10; i++) s1.getColumn(i).width = 13;
+  s1.getColumn(4).width = 20; s1.getColumn(5).width = 16;
+  for (let i = 6; i <= 9; i++) s1.getColumn(i).width = 14;
   for (let d = 0; d < daysInMonth; d++) s1.getColumn(nInfo + 1 + d).width = 4.5;
+  for (let i = 0; i < sumHead.length; i++) s1.getColumn(sumStart + i).width = 12;
   s1.views = [{ state: 'frozen', xSplit: nInfo, ySplit: 2 }];
 
   // ---- Sheet 2: Đi muộn (tổng giờ thiếu/thừa) ----
@@ -236,4 +262,83 @@ async function toBufferPayroll(month) {
   return { buffer, count };
 }
 
-module.exports = { build, toBuffer, standardWorkdays, buildPayroll, toBufferPayroll };
+// ===================== IMPORT chấm công tháng (mẫu Up Lark) =====================
+function cellText(cell) {
+  let v = cell && cell.value;
+  if (v == null) return '';
+  if (typeof v === 'object') {
+    if (v.result !== undefined && v.result !== null) return String(v.result);
+    if (v.text !== undefined) return String(v.text);
+    if (Array.isArray(v.richText)) return v.richText.map((t) => t.text).join('');
+    return '';
+  }
+  return String(v);
+}
+
+// Mã công hợp lệ khi import
+const VALID_CODE = /^(X|X\/2|P|P\/2|KL|KL\/2|L|X\/2\+P\/2)$/i;
+
+/**
+ * Import file Excel chấm công tháng (mẫu Up Lark): map theo cột "Employee ID"
+ * (= employee_code). Ghi các ô X/X2/P... vào bảng công tháng (file ưu tiên).
+ * Dùng chủ yếu để up công cho người làm từ xa không có chấm công trên máy.
+ */
+async function importTimesheet(month, buffer) {
+  if (!/^\d{4}-\d{2}$/.test(month || '')) throw new Error('Thiếu hoặc sai định dạng tháng (YYYY-MM)');
+  const wb = new ExcelJS.Workbook();
+  await wb.xlsx.load(buffer);
+  const ws = wb.getWorksheet('cbnv') || wb.worksheets[0];
+  if (!ws) throw new Error('File không có sheet dữ liệu');
+
+  // Tìm dòng tiêu đề chứa "Employee ID" + các cột ngày (số 1..31)
+  let headerRow = null, empCol = null; const dayCols = {};
+  for (let r = 1; r <= Math.min(ws.rowCount, 10); r++) {
+    const row = ws.getRow(r);
+    let has = false;
+    for (let c = 1; c <= ws.columnCount; c++) {
+      const t = cellText(row.getCell(c)).trim().toLowerCase();
+      if (t === 'employee id' || t === 'employeeid' || t === 'mã nv' || t === 'ma nv') { empCol = c; has = true; }
+    }
+    if (has) {
+      headerRow = r;
+      for (let c = 1; c <= ws.columnCount; c++) {
+        const n = Number(cellText(row.getCell(c)).trim());
+        if (Number.isInteger(n) && n >= 1 && n <= 31) dayCols[c] = n;
+      }
+      break;
+    }
+  }
+  if (!empCol || !Object.keys(dayCols).length) {
+    throw new Error('Không nhận diện được cột "Employee ID" hoặc các cột ngày trong file');
+  }
+
+  const patches = [];
+  for (let r = headerRow + 1; r <= ws.rowCount; r++) {
+    const row = ws.getRow(r);
+    const code = cellText(row.getCell(empCol)).trim();
+    if (!code) continue;
+    const days = {};
+    for (const [c, d] of Object.entries(dayCols)) {
+      const v = cellText(row.getCell(Number(c))).trim().toUpperCase();
+      if (!v || !VALID_CODE.test(v)) continue;
+      days[`${month}-${String(d).padStart(2, '0')}`] = v;
+    }
+    if (Object.keys(days).length) patches.push({ code, days });
+  }
+
+  let imported = 0, totalDays = 0;
+  const unmatched = [];
+  for (const p of patches) {
+    const e = await query('SELECT 1 FROM employees WHERE employee_code = $1', [p.code]);
+    if (!e.rowCount) { unmatched.push(p.code); continue; }
+    await query(
+      `INSERT INTO attendance_records (employee_code, month, days) VALUES ($1,$2,$3::jsonb)
+       ON CONFLICT (employee_code, month) DO UPDATE SET days = attendance_records.days || $3::jsonb`,
+      [p.code, month, JSON.stringify(p.days)]);
+    imported += 1;
+    totalDays += Object.keys(p.days).length;
+  }
+  return { imported, totalDays, unmatched, rows: patches.length };
+}
+
+module.exports = { build, toBuffer, standardWorkdays, buildPayroll, toBufferPayroll, importTimesheet };
