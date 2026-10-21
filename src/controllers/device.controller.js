@@ -46,9 +46,20 @@ const timesheetReport = asyncHandler(async (req, res) => {
   if (!month) return res.status(400).json({ error: 'Thiếu month' });
   const { buffer, count } = await timesheet.toBuffer(month, { deadline: req.query.deadline });
   res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  res.setHeader('Content-Disposition', `attachment; filename="bao-cao-cham-cong-lark-${month}.xlsx"`);
+  res.setHeader('Content-Disposition', `attachment; filename="up-lark-${month}.xlsx"`);
   res.setHeader('X-Employee-Count', String(count));
   res.send(Buffer.from(buffer));
 });
 
-module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport };
+// Bảng tính lương (BM Chấm công): 3 sheet Chấm công / Đi muộn / Dữ liệu máy
+const payrollReport = asyncHandler(async (req, res) => {
+  const month = req.query.month;
+  if (!month) return res.status(400).json({ error: 'Thiếu month' });
+  const { buffer, count } = await timesheet.toBufferPayroll(month);
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader('Content-Disposition', `attachment; filename="bm-cham-cong-${month}.xlsx"`);
+  res.setHeader('X-Employee-Count', String(count));
+  res.send(Buffer.from(buffer));
+});
+
+module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport, payrollReport };

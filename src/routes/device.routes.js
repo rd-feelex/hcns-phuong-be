@@ -8,5 +8,6 @@ router.post('/sync', controller.runSync);
 router.get('/daily', controller.daily);
 router.get('/lark-status', controller.larkStatus);
 router.get('/timesheet-report', controller.timesheetReport);
+router.get('/payroll-report', controller.payrollReport);
 
 module.exports = router;
