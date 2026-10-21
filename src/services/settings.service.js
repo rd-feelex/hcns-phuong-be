@@ -6,6 +6,8 @@ const ATT_KEY = 'attendance_time';
 const ATT_DEFAULT = {
   in_earliest: '08:00',
   in_grace: '08:30',
+  lunch_start: '12:00',
+  lunch_end: '13:00',
   half_day_cutoff: '14:00',
   aft_start: '13:00',
   aft_in_grace: '13:30',
