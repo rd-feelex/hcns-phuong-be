@@ -9,25 +9,43 @@
 const { query } = require('../config/db');
 const device = require('./zkdevice.service');
 const lark = require('./lark.service');
+const settings = require('./settings.service');
 
-// Ca cả ngày (08:00–17:00) và nửa ca chiều (13:00–17:00). Hệ thống tự nhận
-// diện theo giờ chấm vào: trước 12h = cả ngày, từ 12h = nửa ca chiều.
-const NOON_MIN = 12 * 60;                 // mốc phân biệt sáng/chiều
-const FULL = { startMin: 8 * 60, graceMin: 8 * 60 + 30, endMin: 17 * 60, standard: 540, status: 'X', label: 'cả ngày' };
-const AFT = { startMin: 13 * 60, graceMin: 13 * 60 + 30, endMin: 17 * 60, standard: 240, status: 'X/2', label: 'nửa ca chiều' };
-// Thứ 7: chỉ làm buổi sáng 08:00–12:00 = nửa công
-const SAT = { startMin: 8 * 60, graceMin: 8 * 60 + 30, endMin: 12 * 60, standard: 240, status: 'X/2', label: 'sáng thứ 7' };
-
+// Cấu hình thời gian chấm công MẶC ĐỊNH (HCNS chỉnh được ở trang Cài đặt).
+// Quy tắc thừa/thiếu:
+//  - Vào: sau "in_grace" (vd 08:30) → tính thiếu = (giờ vào − in_grace). Đến sớm không cộng.
+//  - Ra : chuẩn "out_std" (vd 17:00). Về trước out_std → thiếu. Thừa chỉ tính
+//         trong [out_std, out_ot_cap] (vd 17:00–17:30), tối đa = out_ot_cap − out_std.
+const DEFAULT_CONFIG = {
+  in_grace: '08:30',       // ca cả ngày: mốc tính muộn/thiếu buổi sáng
+  aft_in_grace: '13:30',   // nửa ca chiều: mốc muộn
+  out_std: '17:00',        // giờ ra chuẩn (cả ngày & nửa chiều)
+  out_ot_cap: '17:30',     // thừa tính tối đa tới đây
+  sat_in_grace: '08:30',   // thứ 7
+  sat_out_std: '12:00',
+  sat_out_ot_cap: '12:30',
+  min_session: 120,        // (phút) cách nhau tối thiểu giữa vào/ra để coi là giờ ra thật
+};
+const NOON_MIN = 12 * 60;
+const hm2min = (s) => { const [h, m] = String(s).split(':').map(Number); return h * 60 + (m || 0); };
 const toMin = (d) => d.getHours() * 60 + d.getMinutes();
 const hhmm = (min) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}:00`;
+const hm = (min) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
 
-// Tính kết quả 1 ngày từ danh sách lượt chấm (mảng Date) + ngày (để biết thứ)
-// Khoảng cách tối thiểu (phút) giữa lượt vào và lượt ra để coi là 1 buổi làm thật.
-// Dưới mốc này coi như quẹt trùng (double-tap) chứ không phải giờ ra.
-const MIN_SESSION = 120;
+function shiftsFromConfig(cfg) {
+  const C = { ...DEFAULT_CONFIG, ...(cfg || {}) };
+  return {
+    FULL: { graceMin: hm2min(C.in_grace), endMin: hm2min(C.out_std), otCap: hm2min(C.out_ot_cap), status: 'X', label: 'cả ngày' },
+    AFT: { graceMin: hm2min(C.aft_in_grace), endMin: hm2min(C.out_std), otCap: hm2min(C.out_ot_cap), status: 'X/2', label: 'nửa ca chiều' },
+    SAT: { graceMin: hm2min(C.sat_in_grace), endMin: hm2min(C.sat_out_std), otCap: hm2min(C.sat_out_ot_cap), status: 'X/2', label: 'sáng thứ 7' },
+    minSession: Number(C.min_session) || 120,
+  };
+}
 
-function computeDay(times, dateStr) {
+// Tính kết quả 1 ngày từ danh sách lượt chấm (mảng Date) + ngày (biết thứ) + cấu hình thời gian.
+function computeDay(times, dateStr, cfg) {
   if (!times.length) return null;
+  const S = shiftsFromConfig(cfg);
   // Gộp các lượt quẹt TRÙNG PHÚT để tránh double-tap làm lệch
   const mins = [...new Set(times.map(toMin))].sort((a, b) => a - b);
   const inMin = mins[0];
@@ -36,21 +54,27 @@ function computeDay(times, dateStr) {
   // Chọn ca: thứ 7 = ca sáng; T2–T6 vào sáng = cả ngày, vào chiều = nửa ca chiều
   const dow = dateStr ? new Date(`${dateStr}T00:00:00`).getDay() : 1;
   let shift;
-  if (dow === 6) shift = inMin < NOON_MIN ? SAT : AFT;
-  else shift = inMin < NOON_MIN ? FULL : AFT;
+  if (dow === 6) shift = inMin < NOON_MIN ? S.SAT : S.AFT;
+  else shift = inMin < NOON_MIN ? S.FULL : S.AFT;
   // Có giờ ra khi có >=2 lượt cách nhau đủ xa (lượt cuối = giờ ra, kể cả về sớm)
-  const hasOut = (outMin - inMin) >= MIN_SESSION;
+  const hasOut = (outMin - inMin) >= S.minSession;
   const late = inMin > shift.graceMin;
 
   let worked = null, diff = null, note = null;
   const status = shift.status;
   if (hasOut) {
     worked = outMin - inMin;
-    diff = worked - shift.standard;
+    const morningDeficit = Math.max(0, inMin - shift.graceMin);       // vào sau mốc → thiếu
+    let overtime = 0, eveningDeficit = 0;
+    if (outMin >= shift.endMin) overtime = Math.min(outMin, shift.otCap) - shift.endMin; // thừa [std, cap]
+    else eveningDeficit = shift.endMin - outMin;                      // về trước giờ ra chuẩn → thiếu
+    diff = overtime - morningDeficit - eveningDeficit;
     const parts = [];
-    if (late) parts.push(`vào muộn (sau ${shift === AFT ? '13:30' : '08:30'})`);
-    if (outMin < shift.endMin) parts.push(`về sớm lúc ${String(Math.floor(outMin / 60)).padStart(2, '0')}:${String(outMin % 60).padStart(2, '0')}`);
-    note = parts.length ? `Ca ${shift.label} — ${parts.join(', ')}` : `Ca ${shift.label}`;
+    if (morningDeficit > 0) parts.push(`vào muộn sau ${hm(shift.graceMin)}`);
+    if (eveningDeficit > 0) parts.push(`về sớm trước ${hm(shift.endMin)}`);
+    if (diff > 0) note = `Ca ${shift.label} — thừa ${diff} phút`;
+    else if (diff < 0) note = `Ca ${shift.label} — thiếu ${-diff} phút${parts.length ? ' (' + parts.join(', ') + ')' : ''}`;
+    else note = `Ca ${shift.label} — đủ công`;
   } else {
     note = `Chỉ có 1 lượt quẹt (quên quẹt ra?) — kiểm tra lại`;
   }
@@ -84,6 +108,7 @@ function groupLogs(logs) {
 // Đồng bộ: kéo log mới từ máy, tính công, ghi vào attendance_daily + attendance_records(days)
 async function sync({ fromMonth, full = false } = {}) {
   const sn = (await device.ping()).sn || 'ZK';
+  const cfg = await settings.getAttendanceConfig();
 
   // Làm mới map từ bảng Bitable công ty (người mới đăng ký máy + thêm vào bảng
   // sẽ tự được gắn enroll_id + lark_user_id ở lần đồng bộ này)
@@ -142,7 +167,7 @@ async function sync({ fromMonth, full = false } = {}) {
         if (!Number.isNaN(dt.getTime())) { allTimes = allTimes.concat(dt); seen.add(p); }
       }
     }
-    const res = computeDay(allTimes, g.date);
+    const res = computeDay(allTimes, g.date, cfg);
     if (!res) continue;
 
     await query(
@@ -316,7 +341,8 @@ async function applyCorrection(employee_code, fix) {
   if (co) times.push(new Date(`${date}T${co}`));
   if (!times.length) return { ok: false, reason: 'không có giờ để bù' };
 
-  const res = computeDay(times, date);
+  const cfg = await settings.getAttendanceConfig();
+  const res = computeDay(times, date, cfg);
   const status = fix.status || res.status;
   await query(
     `INSERT INTO attendance_daily

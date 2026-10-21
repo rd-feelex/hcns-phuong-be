@@ -16,5 +16,6 @@ router.use('/dashboard', require('./dashboard.routes'));
 router.use('/payroll', require('./payroll.routes'));
 router.use('/hr', require('./hr.routes'));
 router.use('/device', require('./device.routes'));
+router.use('/settings', require('./settings.routes'));
 
 module.exports = router;
