@@ -61,7 +61,9 @@ function computeDay(times, dateStr, cfg) {
   const late = inMin > shift.graceMin;
 
   let worked = null, diff = null, note = null;
-  const status = shift.status;
+  // Thiếu 1 lượt (vào hoặc ra) → mã 'T' (thiếu), KHÔNG tính công cho tới khi
+  // có đủ 2 lượt hoặc phiếu quên chấm công được duyệt bổ sung.
+  let status = hasOut ? shift.status : 'T';
   if (hasOut) {
     worked = outMin - inMin;
     const morningDeficit = Math.max(0, inMin - shift.graceMin);       // vào sau mốc → thiếu
@@ -76,7 +78,7 @@ function computeDay(times, dateStr, cfg) {
     else if (diff < 0) note = `Ca ${shift.label} — thiếu ${-diff} phút${parts.length ? ' (' + parts.join(', ') + ')' : ''}`;
     else note = `Ca ${shift.label} — đủ công`;
   } else {
-    note = `Chỉ có 1 lượt quẹt (quên quẹt ra?) — kiểm tra lại`;
+    note = `Thiếu lượt chấm (${inMin < NOON_MIN ? 'quên quẹt RA' : 'quên quẹt VÀO'}) — cần phiếu quên chấm công`;
   }
 
   return {
