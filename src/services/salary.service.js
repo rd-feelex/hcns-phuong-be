@@ -11,12 +11,13 @@ async function list({ month, company, search }) {
     const p = add(`%${search}%`);
     where.push(`(e.full_name ILIKE ${p} OR s.employee_code ILIKE ${p})`);
   }
+  where.push(`e.status = 'active'`); // ẩn nhân viên đã nghỉ khỏi bảng lương
   const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
 
   const { rows } = await query(
     `SELECT s.*, e.full_name, e.position, e.department
      FROM salary_records s
-     LEFT JOIN employees e ON e.employee_code = s.employee_code
+     JOIN employees e ON e.employee_code = s.employee_code
      ${whereSql}
      ORDER BY s.employee_code`,
     params

@@ -65,16 +65,14 @@ async function kpiDetails({ month, sheet }) {
 
 async function contractorSalaries({ month }) {
   const params = [];
-  let whereSql = '';
-  if (month) {
-    params.push(month);
-    whereSql = 'WHERE c.month = $1';
-  }
+  const where = [`e.status = 'active'`]; // ẩn người đã nghỉ khỏi bảng lương CTV
+  if (month) { params.push(month); where.push(`c.month = $${params.length}`); }
+  const whereSql = `WHERE ${where.join(' AND ')}`;
   const { rows } = await query(
     `SELECT c.*, e.full_name, e.position, e.department, e.employee_type,
             e.status AS emp_status
      FROM contractor_salaries c
-     LEFT JOIN employees e ON e.employee_code = c.employee_code
+     JOIN employees e ON e.employee_code = c.employee_code
      ${whereSql}
      ORDER BY c.employee_code`,
     params
