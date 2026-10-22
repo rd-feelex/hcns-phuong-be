@@ -77,4 +77,42 @@ async function applyLeaveDates(employee_code, dates, code = 'P') {
   return { months: Object.keys(byMonth).length, days: (dates || []).length };
 }
 
-module.exports = { list, save, applyLeaveDates };
+/**
+ * Tích luỹ phép năm: nhân viên CHÍNH THỨC được +1 ngày/tháng (tối đa 12/năm).
+ * Tính theo số tháng kể từ đầu năm (hoặc từ tháng vào chính thức) đến tháng hiện tại.
+ * Đặt entitled = số đã tích luỹ (giữ nguyên "adjusted" là điều chỉnh tay).
+ * Idempotent: chạy lại cho ra cùng kết quả (an toàn để cron chạy hàng tháng).
+ */
+async function accrueLeave({ year, perMonth = 1, maxPerYear = 12 } = {}) {
+  const now = new Date();
+  const Y = year || now.getFullYear();
+  const curIdx = (Y === now.getFullYear()) ? now.getMonth() : 11; // 0-11; năm cũ = đủ 12 tháng
+  const emps = (await query(
+    `SELECT employee_code, employee_type, join_date, contract_start_date
+     FROM employees WHERE status='active'`)).rows;
+
+  let staff = 0;
+  for (const e of emps) {
+    let accrued = 0;
+    if (e.employee_type === 'staff') {
+      // tháng bắt đầu tính trong năm
+      let startIdx = 0;
+      const start = e.contract_start_date || e.join_date;
+      if (start) {
+        const d = new Date(start);
+        if (d.getFullYear() > Y) { accrued = 0; }
+        else if (d.getFullYear() === Y) startIdx = d.getMonth();
+      }
+      accrued = Math.min(maxPerYear, Math.max(0, (curIdx - startIdx + 1) * perMonth));
+      staff += 1;
+    }
+    await query(
+      `INSERT INTO leave_balances (employee_code, year, entitled, adjusted, updated_at)
+       VALUES ($1,$2,$3,0, now())
+       ON CONFLICT (employee_code, year) DO UPDATE SET entitled = $3, updated_at = now()`,
+      [e.employee_code, Y, accrued]);
+  }
+  return { year: Y, staff, total: emps.length };
+}
+
+module.exports = { list, save, applyLeaveDates, accrueLeave };
