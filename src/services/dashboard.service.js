@@ -2,7 +2,7 @@ const { query } = require('../config/db');
 
 async function stats(month) {
   const [empRes, salRes] = await Promise.all([
-    query('SELECT employee_code, company, department, status, employee_type FROM employees'),
+    query('SELECT employee_code, company, department, status, employee_type, contract_type FROM employees'),
     month
       ? query('SELECT * FROM salary_records WHERE month = $1', [month])
       : query('SELECT * FROM salary_records'),
@@ -75,6 +75,16 @@ async function stats(month) {
     total_tax: sum('personal_income_tax'),
     total_insurance: sum('social_insurance_total'),
     total_company_cost: sum('company_cost'),
+    by_type: (() => {
+      const act = employees.filter((e) => e.status === 'active');
+      const isProb = (e) => String(e.contract_type || '').toLowerCase().includes('thử việc');
+      return {
+        chinh_thuc: act.filter((e) => (e.employee_type || 'staff') === 'staff' && !isProb(e)).length,
+        thu_viec: act.filter((e) => (e.employee_type || 'staff') === 'staff' && isProb(e)).length,
+        ctv: act.filter((e) => e.employee_type === 'ctv').length,
+        intern: act.filter((e) => e.employee_type === 'intern').length,
+      };
+    })(),
     headcount_by_company: groupBy([...pairs.values()], (p) => p.comp, () => 1),
     headcount_by_department: groupBy(employees, (e) => e.department, () => 1),
     payroll_by_company: groupBy(salaries, (s) => s.company, (s) => Number(s.final_received) || 0),
