@@ -1,14 +1,30 @@
 const { query } = require('../config/db');
 
-async function stats(month) {
-  const [empRes, salRes] = await Promise.all([
+async function stats(month, company) {
+  const [empRes, salRes, apvRes, expRes, compRes] = await Promise.all([
     query('SELECT employee_code, company, department, status, employee_type, contract_type FROM employees'),
     month
       ? query('SELECT * FROM salary_records WHERE month = $1', [month])
       : query('SELECT * FROM salary_records'),
+    // đơn Lark đang chờ duyệt
+    query(`SELECT COUNT(*) n FROM approvals WHERE status = 'PENDING'`).catch(() => ({ rows: [{ n: 0 }] })),
+    // HĐLĐ / thử việc sắp hết hạn trong 30 ngày (còn đang làm)
+    query(`SELECT employee_code, full_name, company, probation_end_date::text d, 'Hết thử việc' kind
+           FROM employees WHERE status='active' AND probation_end_date IS NOT NULL
+             AND probation_end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '30 days'
+           ORDER BY probation_end_date LIMIT 20`).catch(() => ({ rows: [] })),
+    query(`SELECT DISTINCT company FROM employees WHERE company IS NOT NULL AND company <> '' ORDER BY company`).catch(() => ({ rows: [] })),
   ]);
-  const employees = empRes.rows;
-  const salaries = salRes.rows;
+  let employees = empRes.rows;
+  let salaries = salRes.rows;
+  if (company) {
+    employees = employees.filter((e) => e.company === company);
+    const codes = new Set(employees.map((e) => e.employee_code));
+    salaries = salaries.filter((s) => s.company === company || codes.has(s.employee_code));
+  }
+  const pending_approvals = Number(apvRes.rows[0]?.n) || 0;
+  const expiring = expRes.rows.filter((r) => !company || r.company === company);
+  const companies = compRes.rows.map((r) => r.company);
 
   const sum = (field) =>
     salaries.reduce((acc, r) => acc + (Number(r[field]) || 0), 0);
@@ -63,6 +79,9 @@ async function stats(month) {
 
   return {
     month,
+    pending_approvals,
+    expiring,
+    companies,
     company_departments,
     total_employees: employees.filter(
       (e) => e.status === 'active' && (e.employee_type || 'staff') === 'staff'
