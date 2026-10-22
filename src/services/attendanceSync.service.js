@@ -20,6 +20,7 @@ const settings = require('./settings.service');
 const DEFAULT_CONFIG = {
   in_earliest: '08:00',    // giờ bắt đầu ca sáng/cả ngày (đến sớm hơn không cộng)
   in_grace: '08:30',       // cờ "Muộn" nếu vào sau mốc này
+  aft_checkin_from: '11:00',// VÀO sau mốc này = tính ca chiều (nửa công chiều)
   lunch_start: '12:00',    // nghỉ trưa (trừ khỏi thời gian làm)
   lunch_end: '13:00',
   half_day_cutoff: '14:00',// vào sáng, VỀ TRƯỚC mốc này = nửa ca sáng; về sau = cả ngày
@@ -54,6 +55,7 @@ function shiftsFromConfig(cfg) {
     AFT: mk(hm2min(C.aft_start), hm2min(C.out_std), hm2min(C.out_ot_cap), hm2min(C.aft_in_grace), 'X/2', 'nửa ca chiều'),
     SAT: mk(earliest, hm2min(C.sat_out_std), hm2min(C.sat_out_ot_cap), hm2min(C.sat_in_grace), 'X/2', 'sáng thứ 7'),
     lunchStart: ls, lunchEnd: le,
+    aftCheckinFrom: hm2min(C.aft_checkin_from),
     halfCutoff: hm2min(C.half_day_cutoff),
     minSession: Number(C.min_session) || 120,
   };
@@ -79,9 +81,9 @@ function computeDay(times, dateStr, cfg) {
   //  Vd: 8h→12h30 = X/2 sáng · 8h→13h30 = X/2 sáng · 8h→14h/15h = X + thiếu · 8h→17h = X · 13h30→17h30 = X/2 chiều.
   const dow = dateStr ? new Date(`${dateStr}T00:00:00`).getDay() : 1;
   let shift;
-  if (inMin >= NOON_MIN) shift = S.AFT;
+  if (inMin >= S.aftCheckinFrom) shift = S.AFT;              // vào sau ~11h = ca chiều
   else if (dow === 6) shift = S.SAT;
-  else if (hasOut && outMin < S.halfCutoff) shift = S.MORN;
+  else if (hasOut && outMin < S.halfCutoff) shift = S.MORN;  // vào sáng, về trước 14h = nửa sáng
   else shift = S.FULL;
   const late = inMin > shift.graceMin;
 
