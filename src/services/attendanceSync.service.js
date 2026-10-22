@@ -393,6 +393,41 @@ async function applyCorrection(employee_code, fix) {
   return { ok: true, date, check_in: res.check_in, check_out: res.check_out, status };
 }
 
+/**
+ * ADMIN sửa tay 1 ngày công ở Bảng giờ chấm công.
+ * edit = { employee_code, work_date, check_in?, check_out?, status?, diff_minutes?, note? }
+ * Lưu source='manual' để các lần đồng bộ máy sau KHÔNG ghi đè.
+ */
+async function editDay(edit) {
+  const { employee_code, work_date } = edit;
+  if (!employee_code || !work_date) return { ok: false, reason: 'thiếu dữ liệu' };
+  const ci = edit.check_in ? toHHMMSS(edit.check_in) : null;
+  const co = edit.check_out ? toHHMMSS(edit.check_out) : null;
+  const t2m = (t) => { if (!t) return null; const [h, m] = t.split(':').map(Number); return h * 60 + (m || 0); };
+  const worked = (ci && co) ? Math.max(0, t2m(co) - t2m(ci)) : null;
+  const status = edit.status || 'X';
+  const diff = (edit.diff_minutes === '' || edit.diff_minutes == null) ? null : Number(edit.diff_minutes);
+  const note = edit.note != null ? edit.note : 'Sửa tay bởi quản trị';
+  const punches = [ci, co].filter(Boolean);
+
+  await query(
+    `INSERT INTO attendance_daily
+       (employee_code, work_date, check_in, check_out, worked_minutes, diff_minutes, late, status, source, note, punches, updated_at)
+     VALUES ($1,$2,$3,$4,$5,$6,false,$7,'manual',$8,$9::jsonb, now())
+     ON CONFLICT (employee_code, work_date) DO UPDATE SET
+       check_in=EXCLUDED.check_in, check_out=EXCLUDED.check_out, worked_minutes=EXCLUDED.worked_minutes,
+       diff_minutes=EXCLUDED.diff_minutes, status=EXCLUDED.status, source='manual',
+       note=EXCLUDED.note, punches=EXCLUDED.punches, updated_at=now()`,
+    [employee_code, work_date, ci, co, worked, diff, status, note, JSON.stringify(punches)]);
+
+  const month = String(work_date).slice(0, 7);
+  await query(
+    `INSERT INTO attendance_records (employee_code, month, days) VALUES ($1,$2,$3::jsonb)
+     ON CONFLICT (employee_code, month) DO UPDATE SET days = attendance_records.days || $3::jsonb`,
+    [employee_code, month, JSON.stringify({ [String(work_date).slice(0, 10)]: status })]);
+  return { ok: true };
+}
+
 // Danh sách ngày chi tiết (giờ vào/ra/thừa/thiếu) — theo tháng hoặc khoảng ngày
 async function daily({ month, from, to }) {
   let whereSql, params;
@@ -414,4 +449,4 @@ async function daily({ month, from, to }) {
   return rows;
 }
 
-module.exports = { sync, daily, computeDay, applyCorrection };
+module.exports = { sync, daily, computeDay, applyCorrection, editDay };

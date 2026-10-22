@@ -8,6 +8,7 @@ router.get('/match', controller.matchTable);
 router.put('/match', controller.saveMatches);
 router.post('/sync', controller.runSync);
 router.get('/daily', controller.daily);
+router.put('/daily', controller.editDaily);
 router.get('/lark-status', controller.larkStatus);
 router.get('/timesheet-report', controller.timesheetReport);
 router.get('/payroll-report', controller.payrollReport);

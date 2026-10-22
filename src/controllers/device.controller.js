@@ -29,6 +29,11 @@ const daily = asyncHandler(async (req, res) => {
   res.json(await sync.daily({ month, from, to }));
 });
 
+// Admin sửa tay 1 ngày công
+const editDaily = asyncHandler(async (req, res) => {
+  res.json(await sync.editDay(req.body || {}));
+});
+
 const larkStatus = asyncHandler(async (req, res) => {
   if (!lark.isConfigured()) return res.json({ configured: false });
   try {
@@ -70,4 +75,4 @@ const importTimesheet = asyncHandler(async (req, res) => {
   res.json(await timesheet.importTimesheet(month, req.file.buffer));
 });
 
-module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport, payrollReport, importTimesheet };
+module.exports = { ping, matchTable, saveMatches, runSync, daily, larkStatus, timesheetReport, payrollReport, importTimesheet, editDaily };
