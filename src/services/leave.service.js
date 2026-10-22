@@ -1,4 +1,17 @@
+const ExcelJS = require('exceljs');
 const { query } = require('../config/db');
+
+function cellText(cell) {
+  let v = cell && cell.value;
+  if (v == null) return '';
+  if (typeof v === 'object') {
+    if (v.result !== undefined && v.result !== null) return String(v.result);
+    if (v.text !== undefined) return String(v.text);
+    if (Array.isArray(v.richText)) return v.richText.map((t) => t.text).join('');
+    return '';
+  }
+  return String(v);
+}
 
 /**
  * Quỹ phép năm: entitled (phép năm) + adjusted (điều chỉnh tay) − used (tự tính
@@ -115,4 +128,64 @@ async function accrueLeave({ year, perMonth = 1, maxPerYear = 12 } = {}) {
   return { year: Y, staff, total: emps.length };
 }
 
-module.exports = { list, save, applyLeaveDates, accrueLeave };
+/**
+ * Import quỹ phép "còn lại" từ file export Lark (cột User ID + "Nghỉ phép năm").
+ * Căn sao cho SỐ CÒN LẠI trên web = số của Lark tại thời điểm import:
+ *   remaining = entitled + adjusted − used  ⇒  adjusted = larkRemaining + used − entitled
+ * Từ đó web tự cộng (tích luỹ tháng) / trừ (phiếu nghỉ) tiếp.
+ */
+async function importBalance(buffer, { year } = {}) {
+  const Y = year || new Date().getFullYear();
+  const wb = new ExcelJS.Workbook();
+  await wb.xlsx.load(buffer);
+  const ws = wb.worksheets[0];
+  if (!ws) throw new Error('File không có dữ liệu');
+
+  // tìm cột User ID + cột số dư phép ở dòng tiêu đề
+  let uidCol = null, balCol = null;
+  const hr = ws.getRow(1);
+  for (let c = 1; c <= ws.columnCount; c++) {
+    const t = cellText(hr.getCell(c)).toLowerCase();
+    if (t.includes('user id') || t === 'userid') uidCol = c;
+    if (t.includes('phép') || t.includes('leave') || t.includes('balance')) balCol = c;
+  }
+  if (!uidCol || !balCol) throw new Error('Không tìm thấy cột "User ID" hoặc cột số phép trong file');
+
+  // entitled + used hiện tại của từng NV (map theo lark_user_id)
+  const rows = (await query(
+    `WITH used AS (
+       SELECT a.employee_code,
+              SUM(CASE WHEN upper(v.value)='P' THEN 1
+                       WHEN upper(v.value) IN ('P/2','X/2+P/2') THEN 0.5 ELSE 0 END) used
+       FROM attendance_records a, jsonb_each_text(a.days) v
+       WHERE a.month LIKE $2 GROUP BY 1)
+     SELECT e.employee_code, e.lark_user_id,
+            COALESCE(lb.entitled,0) entitled, COALESCE(u.used,0) used
+     FROM employees e
+     LEFT JOIN leave_balances lb ON lb.employee_code=e.employee_code AND lb.year=$1
+     LEFT JOIN used u ON u.employee_code=e.employee_code
+     WHERE e.lark_user_id IS NOT NULL`, [Y, `${Y}-%`])).rows;
+  const byUid = Object.fromEntries(rows.map((r) => [r.lark_user_id, r]));
+
+  let imported = 0;
+  const unmatched = [];
+  for (let r = 2; r <= ws.rowCount; r++) {
+    const uid = cellText(ws.getRow(r).getCell(uidCol)).trim();
+    if (!uid) continue;
+    const raw = cellText(ws.getRow(r).getCell(balCol)).trim();
+    const bal = parseFloat(raw);
+    if (!Number.isFinite(bal)) continue;             // "-" hoặc rỗng -> bỏ qua
+    const e = byUid[uid];
+    if (!e) { unmatched.push(uid); continue; }
+    const adjusted = Math.round((bal + Number(e.used) - Number(e.entitled)) * 100) / 100;
+    await query(
+      `INSERT INTO leave_balances (employee_code, year, entitled, adjusted, note, updated_at)
+       VALUES ($1,$2,$3,$4,$5, now())
+       ON CONFLICT (employee_code, year) DO UPDATE SET adjusted=$4, note=$5, updated_at=now()`,
+      [e.employee_code, Y, e.entitled, adjusted, `Căn số dư Lark ${new Date().toISOString().slice(0, 10)}`]);
+    imported += 1;
+  }
+  return { imported, unmatched: [...new Set(unmatched)], year: Y };
+}
+
+module.exports = { list, save, applyLeaveDates, accrueLeave, importBalance };

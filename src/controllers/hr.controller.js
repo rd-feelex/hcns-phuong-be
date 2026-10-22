@@ -33,11 +33,17 @@ const leaveSave = asyncHandler(async (req, res) => {
   res.json(await leaveService.save(Number(year), items));
 });
 
+const leaveImport = asyncHandler(async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Chưa chọn file' });
+  const year = Number(req.body.year) || new Date().getFullYear();
+  res.json(await leaveService.importBalance(req.file.buffer, { year }));
+});
+
 const approvals = asyncHandler(async (req, res) => {
   res.json(await approvalService.list(req.query));
 });
 
 module.exports = {
   changes, arrears, ebitda, grades, kpiDetails, contractorSalaries,
-  leaveList, leaveSave, approvals,
+  leaveList, leaveSave, leaveImport, approvals,
 };
