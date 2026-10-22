@@ -9,7 +9,7 @@ const ATT_DEFAULT = {
   aft_checkin_from: '11:00',
   lunch_start: '12:00',
   lunch_end: '13:00',
-  half_day_cutoff: '14:00',
+  half_day_cutoff: '15:00',
   aft_start: '13:00',
   aft_in_grace: '13:30',
   morning_end: '12:00',

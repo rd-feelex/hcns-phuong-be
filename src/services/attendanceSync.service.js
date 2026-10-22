@@ -23,7 +23,7 @@ const DEFAULT_CONFIG = {
   aft_checkin_from: '11:00',// VÀO sau mốc này = tính ca chiều (nửa công chiều)
   lunch_start: '12:00',    // nghỉ trưa (trừ khỏi thời gian làm)
   lunch_end: '13:00',
-  half_day_cutoff: '14:00',// vào sáng, VỀ TRƯỚC mốc này = nửa ca sáng; về sau = cả ngày
+  half_day_cutoff: '15:00',// vào sáng: về TRƯỚC mốc này = nửa ca sáng (thừa ko chặn); về SAU = cả ngày (thiếu)
   aft_start: '13:00',      // giờ bắt đầu ca chiều
   aft_in_grace: '13:30',   // cờ muộn ca chiều (chấm vào 13:00–13:30 linh hoạt)
   morning_end: '12:00',    // giờ ra chuẩn của nửa ca sáng
@@ -46,12 +46,14 @@ function shiftsFromConfig(cfg) {
   const C = { ...DEFAULT_CONFIG, ...(cfg || {}) };
   const ls = hm2min(C.lunch_start), le = hm2min(C.lunch_end);
   // công chuẩn = (giờ ra chuẩn − giờ bắt đầu) − phần nghỉ trưa trong khoảng đó
-  const mk = (startMin, endMin, otCap, graceMin, status, label) =>
-    ({ startMin, endMin, otCap, graceMin, status, label, standard: (endMin - startMin) - lunchCut(startMin, endMin, ls, le) });
+  // capOt = có chặn thừa tối đa không. Nửa ca sáng KHÔNG chặn (ở lại tới gần 15h
+  // vẫn tính hết thừa); cả ngày / nửa chiều / thứ 7 chặn ở mốc otCap.
+  const mk = (startMin, endMin, otCap, graceMin, status, label, capOt = true) =>
+    ({ startMin, endMin, otCap, graceMin, status, label, capOt, standard: (endMin - startMin) - lunchCut(startMin, endMin, ls, le) });
   const earliest = hm2min(C.in_earliest);
   return {
     FULL: mk(earliest, hm2min(C.out_std), hm2min(C.out_ot_cap), hm2min(C.in_grace), 'X', 'cả ngày'),
-    MORN: mk(earliest, hm2min(C.morning_end), hm2min(C.sat_out_ot_cap), hm2min(C.in_grace), 'X/2', 'nửa ca sáng'),
+    MORN: mk(earliest, hm2min(C.morning_end), hm2min(C.sat_out_ot_cap), hm2min(C.in_grace), 'X/2', 'nửa ca sáng', false),
     AFT: mk(hm2min(C.aft_start), hm2min(C.out_std), hm2min(C.out_ot_cap), hm2min(C.aft_in_grace), 'X/2', 'nửa ca chiều'),
     SAT: mk(earliest, hm2min(C.sat_out_std), hm2min(C.sat_out_ot_cap), hm2min(C.sat_in_grace), 'X/2', 'sáng thứ 7'),
     lunchStart: ls, lunchEnd: le,
@@ -96,7 +98,7 @@ function computeDay(times, dateStr, cfg) {
     // Tính công theo THỜI LƯỢNG LÀM = có mặt − nghỉ trưa. Đến sớm hơn giờ bắt đầu không cộng.
     const effIn = Math.max(inMin, shift.startMin);
     const effWorked = Math.max(0, (outMin - effIn) - lunchCut(effIn, outMin, S.lunchStart, S.lunchEnd));
-    const otCapMin = Math.max(0, shift.otCap - shift.endMin);  // thừa tối đa (vd 30')
+    const otCapMin = shift.capOt ? Math.max(0, shift.otCap - shift.endMin) : Infinity; // chặn thừa (nửa sáng ko chặn)
     const rawDiff = effWorked - shift.standard;         // dư/thiếu so với công chuẩn
     diff = rawDiff > 0 ? Math.min(rawDiff, otCapMin) : rawDiff;
     if (diff > 0) note = `Ca ${shift.label} — thừa ${diff} phút`;
